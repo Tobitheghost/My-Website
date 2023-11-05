@@ -1,0 +1,131 @@
+:root {
+  --main-text-color: white;
+  --outline-visibility: solid red 0px;
+  --accent-color: #8b0000;
+  --button-color: var(--accent-color);
+  --button-hover-color: rgb(51, 0, 0);
+  --text-hover-color: red;
+  --background-color: rgb(51, 51, 51);
+  --link_text-color: rgba(255, 255, 255, 0.9);
+  --secondary-background-color: rgba(0, 0, 0, 0.4);
+  --main_title-text-size: 1.5rem;
+  --main_paragraph-text-size: 1rem;
+  --body_link-text-size: 0.7rem;
+  --contact_input-text-size: 2.5rem;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-snap-type: y proximity;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  background: var(--background-color);
+  color: var(--main-text-color);
+  margin: 0 0.5vw 0;
+  max-width: 97vw;
+  font-family: "Arial Narrow Bold", sans-serif;
+}
+
+/* Button */
+button {
+  cursor: pointer;
+  border-radius: 15px;
+  border: none;
+  color: var(--main-text-color);
+  background-color: var(--button-color);
+  transition: background-color 1s ease;
+}
+button:hover {
+  background-color: var(--button-hover-color);
+}
+
+/* Navigation Bar */
+.link-text {
+  cursor: pointer;
+  transition: color 1s ease;
+}
+.link-text:hover {
+  color: var(--text-hover-color);
+}
+nav {
+  height: 100px;
+  padding-top: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+#nav-bar {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#nav-links a {
+  text-decoration: none;
+  color: var(--link_text-color)
+}
+#nav-links {
+  position: absolute;
+  display: inline-flex;
+  width: 100%;
+  justify-content: right;
+  align-items: center;
+}
+#nav-image {
+  display: flex;
+  height: 80%;
+  align-items: center;
+}
+#nav-links ul {
+  display: inline-flex;
+  list-style: none;
+  align-items: center;
+  padding: 10px;
+}
+#nav-links button {
+  height: 40px;
+  width: 100px;
+}
+#nav-links li {
+  align-items: center;
+  padding: 10px;
+}
+
+@media (max-width: 1199px) {
+  .nav-image {
+    height: 50%;
+  }
+
+  #nav-image {
+    padding-left: 10px;
+    height: 80%;
+  }
+
+  #nav-links {
+    padding-right: 10px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav-image {
+    height: 80%;
+  }
+
+  #nav-image {
+    padding-left: 50px;
+  }
+
+  #nav-links {
+    padding-right: 2%;
+  }
+}

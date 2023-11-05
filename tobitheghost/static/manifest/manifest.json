@@ -1,0 +1,110 @@
+{
+    "name": "Tobi Theo Ghost",
+    "short_name": "Tobi",
+    "start_url": ".",
+    "display": "browser",
+    "background_color": "#323232",
+    "description": "A readable Hacker News app.",
+    "categories": ["games", "personalization", "photo"],
+    "dir": "ltr",
+    "lang": "en-US",
+    "theme_color": "#323232",
+    "icons": [
+        {
+            "src": "tobitheghost/static/icons/favicon_16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_48x48.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_76x76.png",
+            "sizes": "76x76",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_120x120.png",
+            "sizes": "120x120",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_128x128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_152x152.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_167x167.png",
+            "sizes": "167x167",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_180x180.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_196x196.png",
+            "sizes": "196x196",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_228x228.png",
+            "sizes": "228x228",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_300x300.png",
+            "sizes": "300x300",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "tobitheghost/static/icons/favicon_512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "related_applications": [
+      {
+        "platform": "play",
+        "url": "https://play.google.com/store/apps/details?id=cheeaun.hackerweb"
+      }
+    ]
+}

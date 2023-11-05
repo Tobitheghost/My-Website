@@ -1,0 +1,305 @@
+{% extends "base.html"%}
+{% block title %}Tobi Theo Ghost{% endblock %}
+{% block head_link_script %}
+<link rel="stylesheet" href="{{url_for('static', filename='pages/home_page/css/home.css')}}" />
+{% endblock %}
+{% block  content %}
+<div id="hero">
+  <div id="main-hero">
+    <div id="hero-wrapper">
+      <div id="hero-title">
+        <h1>
+          Howdy! Im Tobi<br /><span class="dataeng">Database Engineer</span>
+        </h1>
+        <p>
+          I also am a Full Stack Developer, API Developer and a pretty bad Pixel
+          Artist
+        </p>
+      </div>
+      <div class="links">
+        <a class="website logolink" href="#"
+          ><span class="link-text">tobitheeghoost@gmail.com</span></a
+        >
+        <a class="github logolink" href="https://github.com/Tobitheghost"
+          ><img
+            class="github_logo link_logo"
+            src="{{url_for('static', filename='pages/home_page/images/github-mark-white.svg')}}" /><span class="link-text"
+            >Github</span
+          ></a
+        >
+        <a class="linkedin logolink" href="www.linkedin.com/in/tobitheghost"
+          ><img
+            class="linkedin_logo link_logo"
+            src="{{url_for('static', filename='pages/home_page/images/linkedin-white.svg')}}" /><span class="link-text"
+            >LinkedIn</span
+          ></a
+        >
+        <a class="twitter logolink" href="#"
+          ><img
+            class="twitter_logo link_logo"
+            src="{{url_for('static', filename='pages/home_page/images/twitter-white.svg')}}" /><span class="link-text"
+            >Twitter</span
+          ></a
+        >
+      </div>
+      <a href="#about-me"><button>Get To Know Me!</button></a>
+    </div>
+  </div>
+  <div id="contact-hero">
+    <div id="contact-input">
+      <form>
+        <fieldset>
+          <!-- <p>I spent alot of time on this site, but contacting me would be the easiest way to get to know me.</p> -->
+          <legend><h2>Contact Me</h2></legend>
+          <div id="input-text">
+            <div id="name-input">
+              <label id="name-label" for="name_field">Name:</label>
+              <input
+                id="name_field"
+                name="name_field"
+                type="text"
+                placeholder="Enter a Name" />
+            </div>
+            <div id="email-input">
+              <label id="email-label" name="email_field">Email:</label>
+              <input
+                id="email_field"
+                name="email_field"
+                type="email"
+                required
+                placeholder="Enter your Email" />
+            </div>
+          </div>
+          <!-- <label for="email_body">Message:</label> -->
+          <textarea
+            id="email_body"
+            name="email_body"
+            rows="10"
+            cols="50"
+            placeholder="Enter your Message"></textarea>
+          <input id="submit_button" type="submit" value="Send Message" />
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="pixel-art"></div>
+<div id="portfolio">
+  <div class="about-me-wrapper">
+    <div id="about-me">
+      <p class="about-me-text">
+        <span class="para one"
+          >My name is Tobiathan Theo Ghost, but
+          <span id="tobi-name">Tobi</span> is alot easier. I'm a passionate and
+          skilled computer scientist hailing from Kansas City, Missouri. While
+          I've been coding for personal projects for several years, my journey
+          into full-time focus on computer science started a 7 years ago when
+          exciting opportunities presented themselves, and I couldn't resist
+          taken that opportunity for a life change.</span
+        >
+        <br /><br />
+        <span class="para two"
+          >My expertise in Python has allowed me to contribute significantly to
+          small companies by developing efficient inventory systems and building
+          websites for companies from resteraunts to fullfillment centers. I
+          have also delighted friends with my games, art, and helpfull tools. As
+          I pursued computer science as a career, I found myself embracing new
+          challenges and rising to meet the demands of larger clients and more
+          niche requests.</span
+        >
+        <br /><br />
+        <span class="para three"
+          >I have used many technologies in my years.
+          <span id="skills"
+            >Sql, Flask, Django, JavaScript, Amazon, Azure, Node, React
+            Microsoft Office and many more</span
+          >. I have a good understanding of the basics so I have been able to
+          work with
+          <span id="more-skills">C#, C++, Java, .Net, Golang and more</span>
+          but havent worked with them as vastly as I have the previously
+          mentioned technologies.</span
+        >
+        <br /><br />
+        <span class="para four"
+          >I love to learn and to apply what I have learned and love to see my
+          clients satasfied with what I can provide.
+          <span id="ending"
+            >Feel free to contact me so I can become a vital asset to your
+            team.</span
+          ></span
+        >
+      </p>
+    </div>
+    <div id="about-me-image">
+      <img
+        class="about-me-image"
+        src="{{url_for('static', filename='pages/home_page/images/Candice Tobi Copy Menu White Outline.gif')}}"
+        alt="Tobi-image-pixelart"
+        name="Tobi-image-pixelart"
+        is="Tobi-image-pixelart" />
+    </div>
+  </div>
+  <div id="portfolio-section">
+    <!-- portfolio link template -->
+
+    <!-- Texas Toms -->
+    <div class="portfolio-wrapper">
+      <a id="portfolio-link" href="#">
+        <div id="attention-portolio">
+          <h3 class="portfolio-title">Texas Toms</h3>
+          <div class="portfolio-image-">
+            <div class="portfolio-image texas-toms"></div>
+          </div>
+        </div>
+
+        <div class="portfolio-description-spacer">
+          <div class="portfolio-description">
+            <p>
+              Using basic Html and Css to create a landing page for a local
+              restaurant.<br /><br />Using these tools in a way that is most
+              common and easy for people not familiar with code to give
+              feedback.
+            </p>
+          </div>
+          <div class="skills">
+            <ul class="portfio-skills">
+              <li>CSS</li>
+              <li>HTML</li>
+              <li>Flask</li>
+              <li>Python</li>
+              <li>Linux</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- end of template -->
+
+    <!-- Photo Viewer -->
+    <div class="portfolio-wrapper">
+      <a id="portfolio-link" href="#">
+        <div id="attention-portolio">
+          <h3 class="portfolio-title">Photo Viewer</h3>
+          <div class="portfolio-image-">
+            <div class="portfolio-image photo-viewer"></div>
+          </div>
+        </div>
+
+        <div class="portfolio-description-spacer">
+          <div class="portfolio-description">
+            <p>
+              Just a simple image viewer made for a project a colleague needed
+              done in a few hours.
+            </p>
+          </div>
+          <div class="skills">
+            <ul class="portfio-skills">
+              <li>CSS</li>
+              <li>HTML</li>
+              <li>Flask</li>
+              <li>Python</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- end of template -->
+
+    <!-- Maps -->
+    <div class="portfolio-wrapper">
+      <a id="portfolio-link" href="#">
+        <div id="attention-portolio">
+          <h3 class="portfolio-title">Maps</h3>
+          <div class="portfolio-image-">
+            <div class="portfolio-image maps"></div>
+          </div>
+        </div>
+
+        <div class="portfolio-description-spacer">
+          <div class="portfolio-description">
+            <p>
+              Using the OpenStreetMap API and a database from Kansas City, I
+              create a interactive map that you can enter an address to view its
+              parcel. The API is called with JavaScript and the page is made
+              with Flask and Python. It also uses HTMX to enable a responsive
+              interface without reloading the page
+            </p>
+          </div>
+          <div class="skills">
+            <ul class="portfio-skills">
+              <li>JavaScript</li>
+              <li>Python</li>
+              <li>Flask</li>
+              <li>HTMX</li>
+              <li>API</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- end of template -->
+
+    <!-- gxo -->
+    <div class="portfolio-wrapper">
+      <a id="portfolio-link" href="#">
+        <div id="attention-portolio">
+          <h3 class="portfolio-title">GXO</h3>
+          <div class="portfolio-image-">
+            <div class="portfolio-image gxo"></div>
+          </div>
+        </div>
+
+        <div class="portfolio-description-spacer">
+          <div class="portfolio-description">
+            <p>
+              Using Image Map and HTMX to create an interactive map to showcase
+              the Facility.
+            </p>
+          </div>
+          <div class="skills">
+            <ul class="portfio-skills">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>Flask</li>
+              <li>Python</li>
+              <li>HTMX</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- end of template -->
+
+    <!-- Games -->
+    <div class="portfolio-wrapper">
+      <a id="portfolio-link" href="#">
+        <div id="attention-portolio">
+          <h3 class="portfolio-title">Games</h3>
+          <div class="portfolio-image-">
+            <div class="portfolio-image games"></div>
+          </div>
+        </div>
+
+        <div class="portfolio-description-spacer">
+          <div class="portfolio-description">
+            <p>
+              This Link is mostly for friends to check out projects and play
+              games or applications that i work on in my free time.
+            </p>
+          </div>
+          <div class="skills">
+            <ul class="portfio-skills">
+              <li>C++</li>
+              <li>Python</li>
+              <li>Pygame</li>
+              <li>SQL</li>
+              <li>Golang</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- end of template -->
+  </div>
+</div>
+{% endblock %}
