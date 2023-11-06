@@ -6,7 +6,7 @@ import logging
 from .logs import req_log
 
 
-homePage = Blueprint('home',__name__, url_prefix='/')
+homePage = Blueprint('home',__name__)
 
 @homePage.route('/', methods=['GET', 'POST'])
 def home():

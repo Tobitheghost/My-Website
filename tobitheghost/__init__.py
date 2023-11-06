@@ -14,6 +14,7 @@ app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
 def create_app():
+    
     from . import home
     app.register_blueprint(home.homePage)
 
