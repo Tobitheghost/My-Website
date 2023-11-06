@@ -5,7 +5,7 @@ from flask import request
 def req_log():
     logging.basicConfig(
         filename="tobitheghost/utils/site.log",
-        filemode="w",
+        filemode="a",
         format="(%(asctime)s) %(funcName)s [On Line %(lineno)d] %(module)s)---->\t%(message)s",
         level=logging.DEBUG,
     )
