@@ -7,3 +7,4 @@ tobitheghost/utils/
 tobitheghost/__pycache__/__init__.cpython-310.pyc
 tobitheghost/__pycache__/home.cpython-310.pyc
 tobitheghost/__pycache__/logs.cpython-310.pyc
+.vscode/settings.json

@@ -3,8 +3,12 @@ from flask import request
 
 
 def req_log():
-    logging.basicConfig(format='(%(asctime)s) %(funcName)s [On Line %(lineno)d] %(module)s)---->\t%(message)s')
-
+    logging.basicConfig(
+        filename="tobitheghost/utils/site.log",
+        filemode="w",
+        format="(%(asctime)s) %(funcName)s [On Line %(lineno)d] %(module)s)---->\t%(message)s",
+        level=logging.DEBUG,
+    )
     visitor_ip = f'Visitor IP {request.remote_addr}'
     user_agent = f'User Agent {request.user_agent}'
     visitor_url = f'Request {request.url}'
