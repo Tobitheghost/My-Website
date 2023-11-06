@@ -1,14 +1,14 @@
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for,Request
 from flask_mail import Mail, Message
 from .utils.utils import mail_username
-from . import mail
+from . import mail, app
 import logging
 from .logs import req_log
 
 
-homePage = Blueprint('homepage',__name__)
+# homePage = Blueprint('homepage',__name__)
 
-@homePage.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def home():
     req_log()
     if request.method == "POST":
