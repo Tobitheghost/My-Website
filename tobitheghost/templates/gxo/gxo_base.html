@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Base{% endblock %}</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='pages/gxo/gxo.css')}}" />
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+    {% block headLinkScript %}{% endblock %}
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="{{ url_for('home') }}"
+        ><img
+          src="{{url_for('static', filename='pages/gxo/logo.png')}}"
+          alt="Logo"
+          class="logo"
+      /></a>
+      <nav>
+        <ul class="nav_links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li>
+            <a href="{{ url_for('home') }}#portfolio-link">Projects</a>
+          </li>
+          <li><a href="{{ url_for('home') }}#about-me">About</a></li>
+        </ul>
+      </nav>
+      <a href="{{ url_for('home') }}#contact-input"><button>Contact</button></a>
+    </header>
+
+    {% block content %}
+    <h1>Base</h1>
+    {% endblock %} {% block afterBodyScript %}{% endblock %}
+  </body>
+</html>

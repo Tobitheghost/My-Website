@@ -1,7 +1,6 @@
 import logging
 from flask import request
 
-
 def req_log():
     logging.basicConfig(
         filename="tobitheghost/utils/site.log",
