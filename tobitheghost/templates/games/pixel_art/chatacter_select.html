@@ -1,0 +1,30 @@
+{% extends "base.html"%}
+{% block title %}Tobi Theo Ghost{% endblock %}
+{% block head_link_script %}
+<link rel="stylesheet" href="{{url_for('static', filename='pages/games/pixel_art/stlyes.css')}}" />
+{% endblock %}
+{% block  content %}
+<section id="character_wrapper">
+    <div id="character_icon_wrapper">
+        <div id="top_img_wrapper">
+            <div id="img_icon_wrapper">
+                <img>
+            </div>
+        </div>
+        <div id="icon_description">
+            <div id="icon_title">
+                <h2>
+                    Icon TItle
+                </h2>
+            </div>
+            <div id="icon_info">
+                <h3>
+                    GAME PAGE!!
+                </h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

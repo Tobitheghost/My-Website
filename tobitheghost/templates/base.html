@@ -19,32 +19,41 @@
   <body>
     <nav>
       <div id="nav-bar">
-        <div id="nav-image">
-          <img
-            class="nav-image"
-            src="{{url_for('static', filename='pages/home_page/images/logo.png')}}"
-            alt="texas-image-link" />
-        </div>
+        <a class="nav-image-link" href="{{ url_for('home') }}">
+          <div id="nav-image">
+            <img
+              class="nav-image"
+              src="{{url_for('static', filename='pages/home_page/images/logo.png')}}"
+              alt="Tobi logo image" />
+          </div>
+        </a>
         <div id="nav-links">
           <ul>
             <li>
-              <a href="#about-me"><span class="link-text">About Me</span></a>
+              <a href="{{ url_for('home') }}#about-me"
+                ><span class="link-text">About Me</span></a
+              >
             </li>
             <li>
-              <a href="#portfolio-link"
+              <a href="{{ url_for('home') }}#portfolio-link"
                 ><span class="link-text">Portfolio</span></a
               >
             </li>
             <li>
               <a href="#"><span class="link-text">Pixel</span></a>
             </li>
+            <li>
+              <a href="{{ url_for('movies') }}"><span class="link-text">Movies</span></a>
+            </li>
           </ul>
           <button id="contact_button">
-            <a href="#contact-input">Contact Me</a>
+            <a href="{{ url_for('home') }}#contact-input">Contact Me</a>
           </button>
         </div>
       </div>
     </nav>
     {% block content %} {% endblock %}
+    {% block afterBodyScript %} {% endblock %}
+    
   </body>
 </html>

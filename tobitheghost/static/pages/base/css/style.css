@@ -19,6 +19,7 @@
   box-sizing: border-box;
 }
 html {
+  scroll-behavior: smooth;
   scroll-snap-type: y proximity;
 }
 body {
@@ -81,10 +82,17 @@ nav {
   justify-content: right;
   align-items: center;
 }
-#nav-image {
+
+a.nav-image-link {
   display: flex;
-  height: 80%;
+  height: 100%;
   align-items: center;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+#nav-image {
+  height: 100%;
 }
 #nav-links ul {
   display: inline-flex;

@@ -1,9 +1,9 @@
-{% extends "base.html"%}
-{% block title %}Tobi Theo Ghost{% endblock %}
-{% block head_link_script %}
-<link rel="stylesheet" href="{{url_for('static', filename='pages/home_page/css/home.css')}}" />
-{% endblock %}
-{% block  content %}
+{% extends "base.html"%} {% block title %}Tobi Theo Ghost{% endblock %} {% block
+head_link_script %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='pages/home_page/css/home.css')}}" />
+{% endblock %} {% block content %}
 <div id="hero">
   <div id="main-hero">
     <div id="hero-wrapper">
@@ -23,26 +23,31 @@
         <a class="github logolink" href="https://github.com/Tobitheghost"
           ><img
             class="github_logo link_logo"
-            src="{{url_for('static', filename='pages/home_page/images/github-mark-white.svg')}}" /><span class="link-text"
+            src="{{url_for('static', filename='pages/home_page/images/github-mark-white.svg')}}" /><span
+            class="link-text"
             >Github</span
           ></a
         >
         <a class="linkedin logolink" href="www.linkedin.com/in/tobitheghost"
           ><img
             class="linkedin_logo link_logo"
-            src="{{url_for('static', filename='pages/home_page/images/linkedin-white.svg')}}" /><span class="link-text"
+            src="{{url_for('static', filename='pages/home_page/images/linkedin-white.svg')}}" /><span
+            class="link-text"
             >LinkedIn</span
           ></a
         >
         <a class="twitter logolink" href="#"
           ><img
             class="twitter_logo link_logo"
-            src="{{url_for('static', filename='pages/home_page/images/twitter-white.svg')}}" /><span class="link-text"
+            src="{{url_for('static', filename='pages/home_page/images/twitter-white.svg')}}" /><span
+            class="link-text"
             >Twitter</span
           ></a
         >
       </div>
-      <a href="#about-me"><button>Get To Know Me!</button></a>
+      <a href="{{ url_for('home') }}#about-me"
+        ><button>Get To Know Me!</button></a
+      >
     </div>
   </div>
   <div id="contact-hero">
@@ -207,7 +212,7 @@
 
     <!-- Maps -->
     <div class="portfolio-wrapper">
-      <a id="portfolio-link" href="#">
+      <a id="portfolio-link" href="{{ url_for('maps') }}">
         <div id="attention-portolio">
           <h3 class="portfolio-title">Maps</h3>
           <div class="portfolio-image-">
@@ -272,7 +277,7 @@
 
     <!-- Games -->
     <div class="portfolio-wrapper">
-      <a id="portfolio-link" href="#">
+      <a id="portfolio-link" href="{{ url_for('games') }}">
         <div id="attention-portolio">
           <h3 class="portfolio-title">Games</h3>
           <div class="portfolio-image-">

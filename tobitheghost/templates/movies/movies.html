@@ -1,0 +1,33 @@
+{% extends "base.html"%} {% block title %}movies{% endblock %} {% block
+head_link_script %}<link
+  rel="stylesheet"
+  href="static/pages/movies/movies.css" />{% endblock %} {% block content %} {%
+for number in range(count)%}
+<div class="movie_container">
+  <div class="img_container">
+    <a class="poster" href="#home"
+      ><img
+        src="static/pages/{{posters[number]}}"
+        alt="{{title}}"
+        class="poster_img"
+    /></a>
+  </div>
+
+  <div class="desc_contain">
+    <h2 class="title">{{titles[number]}}</h2>
+    <p class="release_date">Release: {{dates[number]}}</p>
+    <p class="stream">&nbsp;</p>
+    <p class="gen_desc">{{desc[number]}}</p>
+    <a class="trailer"
+      ><iframe
+        width="560"
+        height="315"
+        src="{{youtube[number]}}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe
+    ></a>
+  </div>
+</div>
+{%endfor%} {% endblock %}
