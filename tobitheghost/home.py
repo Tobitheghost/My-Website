@@ -132,9 +132,7 @@ def outline_invisible():
 
 @app.route("/games")
 def games():
-    return render_template(
-        template_name_or_list="games/pixel_art/chatacter_select.html"
-    )
+    return render_template(template_name_or_list="games/game_page/game_select.html")
 
 
 @app.route("/maps")
@@ -267,6 +265,7 @@ def results(addressID):
         effDate=effDate,
     )
 
+
 @app.route("/movies")
 def movies():
     listoftitles = movieData["title"].values
@@ -284,3 +283,48 @@ def movies():
         posters=listofposter,
         count=count,
     )
+
+
+@app.route("/character_selection")
+def pixel():
+    return render_template("games/pixel_art/character_select.html")
+
+
+@app.route("/character_display/<selected_chr>")
+def chr_display(selected_chr):
+    if selected_chr == "Tammy":
+        chr = "pages/games/pixel_art/sprite_sheets/tammy_iso/tammy_iso-spritesheet/tammy_iso-spritesheet.png"
+        size_class = "One"
+
+        return render_template(
+            "games/pixel_art/character_display.html",
+            chr=chr,
+            sz_cls=size_class,
+            selected_chr=selected_chr,
+            chr_name=selected_chr,
+            chr_date="11/28/2023",
+            chr_inspo="https://www.instagram.com/tammy.weese.142/",
+        )
+    elif selected_chr == "Brisif":
+        chr = "pages/games/pixel_art/sprite_sheets/brisif/brisif-idle/Brisif-idle.gif"
+        size_class = "Three"
+        return render_template(
+            "games/pixel_art/character_display.html",
+            chr=chr,
+            sz_cls=size_class,
+            selected_chr=selected_chr,
+            chr_name=selected_chr,
+            chr_date="11/28/2023",
+            chr_inspo="https://www.instagram.com/unicorn_dust101/",
+        )
+    elif request.args.get("display"):
+        character = request.args.get("chr_selected")
+        print(character)
+        size_class = request.args.get("chr_class")
+        print(selected_chr)
+        return render_template(
+            "games/pixel_art/walking.html",
+            direction=selected_chr,
+            chr=character,
+            sz_cls=size_class,
+        )

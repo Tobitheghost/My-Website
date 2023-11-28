@@ -1,0 +1,220 @@
+:root {
+    --pixel-size: 25;
+    --button-pixel-size: 6;
+    --outine-visable: 0px;
+    --pixel-size-2: 12;
+    --button-pixel-size: 6;
+}
+
+.Character_Display_Container {
+    display: flex;
+    column-gap: 20px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    outline: solid black var(--outine-visable);
+    padding: 100px 10x;
+    height: 85vh;
+    justify-content: center;
+    width: 100%;
+}
+
+.CharacterContainer {
+    /* grid-column-start: 1;
+    grid-column-end: 2; */
+    outline: solid blue var(--outine-visable);
+    border-radius: 25px;
+    display:flex;
+    flex-direction: column;
+    
+    background-color: grey;
+    align-items: center;
+    justify-content: center;
+    height: 95%;
+    min-width: 60%;
+    padding: 0px 0px 0px 0px;
+    margin: 20px;
+}
+
+.character_display {
+    display: flex;
+    outline: solid green var(--outine-visable);
+    justify-content: center;
+    min-height: 65%;
+    min-width: 65%;
+    margin: 0px 0px 30px 0px;
+}
+
+.move_buttons {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    outline: solid red var(--outine-visable);
+    height: 200px;   
+}
+
+.DescriptionContainer {
+    justify-self: center;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    outline: solid pink var(--outine-visable);
+    background-color: rgba(169, 169, 169, 0.356);
+    /* min-width: 30%; */
+    border-radius: 25px;
+    display: grid;
+    padding: 20px 0px 0px 0px;
+    margin: 20px 20px 20px 0;
+}
+
+.title_image {
+    outline: solid burlywood var(--outine-visable);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(32px * var(--button-pixel-size));
+
+}
+
+.banner_image {
+    display: flex;
+    outline: solid yellowgreen var(--outine-visable);
+    width: calc(64px * var(--button-pixel-size)); 
+    height: calc(32px * var(--button-pixel-size));
+    
+}
+
+.name_section {
+    display: flex;
+    outline: solid black var(--outine-visable);
+    color: black;
+}
+
+.descriptors li{
+    font-family: 'Pixelify Sans', cursive;
+    color: black;
+    list-style:none;
+    font-size: 2em;
+    padding: 3px 1em 0 1em;
+}
+
+.description_link {
+    display: flex;
+    justify-content: center;
+    height: calc(16px * var(--button-pixel-size));
+    outline: solid black var(--outine-visable);
+    padding: 0px 10px 0px 10px;
+}
+
+.description_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(20px * var(--button-pixel-size));
+    outline: solid black var(--outine-visable);
+}
+
+.description_button button {
+    margin: 0 10px 0 10px;
+    height: 70px;
+    width: 200px;
+}
+
+.p_button {
+    outline: solid orangered var(--outine-visable);
+    width: calc(16px * var(--button-pixel-size)); 
+    height: calc(16px * var(--button-pixel-size));
+    margin: 0 5px 0 5px;
+    cursor: pointer;
+    
+} 
+
+.Character.One {
+    outline: solid purple var(--outine-visable);
+    width: calc(16px * var(--pixel-size)); 
+    height: calc(20px * var(--pixel-size));
+    /*background-color: red;*/
+    overflow: hidden;
+    position: relative;
+}
+
+.Character.Two {
+    outline: solid pink var(--outine-visable);
+    width: calc(32px * var(--pixel-size-2)); 
+    height: calc(40px * var(--pixel-size-2));
+    /*background-color: red;*/
+    overflow: hidden;
+    position: relative;
+}
+
+.characterSpriteSheet.One {
+    animation: moveSpriteSheet 1s steps(4) infinite;
+    width: calc(64px * var(--pixel-size)); 
+    height: calc(80px * var(--pixel-size));
+    position: absolute;
+} 
+
+.characterSpriteSheet.Two {
+    animation: moveSpriteSheet .35s steps(3) infinite;
+    width: calc(96px * var(--pixel-size-2)); 
+    height: calc(80px * var(--pixel-size-2));
+    position: absolute;
+} 
+
+.characterSpriteSheet.Three {
+    position: relative;
+    top: 160px;
+    scale: 200%;
+} 
+
+.pixelart {
+    image-rendering: pixelated;
+}
+
+.face_left.One {
+    top: calc(-20px * var(--pixel-size));
+}
+
+.face_left.Two {
+    top: calc(-20px * var(--pixel-size));
+}
+
+.btn_left {
+    transform: rotate(0);
+}
+
+.face_right.One {
+    top: calc(-40px * var(--pixel-size));
+}
+
+.face_right.Two {
+    top: calc(-20px * var(--pixel-size));
+}
+
+.btn_right {
+    transform: rotate(180deg);
+}
+
+.face_back.One {
+    top: calc(-60px * var(--pixel-size));
+}
+
+.face_back.Two {
+    top: calc(-60px * var(--pixel-size));
+}
+
+.btn_back {
+    transform: rotate(90deg);
+}
+
+.btn_front {
+    transform: rotate(270deg);
+}
+
+@keyframes moveSpriteSheet {
+    from {
+        transform: translate3d(0px, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-100%, 0, 0);
+    }
+}

@@ -1,0 +1,61 @@
+{
+"Char_name":"Naruto Inspo",
+"Char_icon":{
+    "title":"",
+    "path":""
+},
+"Char_Spritesheet":{
+    "title":"naruto_inspo-spritesheet",
+    "path":"tobitheghost/static/pages/games/pixel_art/sprite_sheets/naruto_inspo/naruto_inspo-spritesheet/naruto_inspo-spritesheet.png",
+    "number_of_actions":2,
+    "spritesheet_width":96,
+    "spritesheet_height":80,
+    "frame_width":32,
+    "frame_height":80,
+    "Animations":{
+        "face_left":{
+            "numb":"NA",
+            "total_frames":"",
+            "fps":"",
+            "pixel_size":"",
+            "button_key":""
+        },
+        "face_right":{
+            "numb":1,           
+            "total_frames":3,   
+            "fps":0.35,         
+            "pixel_size":12,
+            "button_key":"right arrow"
+        },
+        "face_back":{
+            "numb":"NA",          
+            "total_frames":"",   
+            "fps":"",            
+            "pixel_size":"",
+            "button_key":""
+        },
+        "face_front":{
+            "numb":2,          
+            "total_frames":3,  
+            "fps":0.35,        
+            "pixel_size":12,
+            "button_key":"down arrow"
+        }
+    }
+},
+"Char_Descriptors":{
+    "name":"Naruto Insporation",
+    "date":"11/25/2023",
+    "Insperation":[{
+        "name":"Someone2040",
+        "link":""
+    }],
+    "banner_image name":"",
+    "banner_image path":""
+},
+"URLS":{
+    "instagram":"",
+    "tumblr":"",
+    "twitter":""
+}
+}

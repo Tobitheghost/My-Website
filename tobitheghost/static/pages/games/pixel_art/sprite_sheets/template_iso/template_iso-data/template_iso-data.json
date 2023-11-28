@@ -1,0 +1,61 @@
+{
+    "Char_name":"template_iso",
+    "Char_icon":{
+        "title":"template_iso-icon",
+        "path":"tobitheghost/static/pages/games/pixel_art/sprite_sheets/template_iso/template_iso-icon/template_iso-icon.gif"
+    },
+    "Char_Spritesheet":{
+        "title":"template_iso-spritesheet",
+        "path":"tobitheghost/static/pages/games/pixel_art/sprite_sheets/template_iso/template_iso-spritesheet/template_iso-spritesheet.png",
+        "number_of_actions":4,
+        "spritesheet_width":64,
+        "spritesheet_height":80,
+        "frame_width":16,
+        "frame_height":20,
+        "Animations":{
+            "face_left":{
+                "numb":1,           
+                "total_frames":4,    
+                "fps":1,             
+                "pixel_size":25,
+                "button_key":"left arrow"
+            },
+            "face_right":{
+                "numb":2,           
+                "total_frames":4,   
+                "fps":1,         
+                "pixel_size":25,
+                "button_key":"right arrow"
+            },
+            "face_back":{
+                "numb":3,
+                "total_frames":4, 
+                "fps":1,          
+                "pixel_size":25,
+                "button_key":"up arrow"
+            },
+            "face_front":{
+                "numb":0,         
+                "total_frames":4,
+                "fps":1,         
+                "pixel_size":25,
+                "button_key":"down arrow"
+            }
+        }
+    },
+    "Char_Descriptors":{
+        "name":"Template Iso",
+        "date":"11/25/2023",
+        "Insperation":[{
+            "name":"isaiah658",
+            "link":"https://opengameart.org/users/isaiah658"
+        }],
+        "banner_image name":"",
+        "banner_image path":""
+    },
+    "URLS":{
+        "instagram":"",
+        "tumblr":"",
+        "twitter":""
+    }
+    }

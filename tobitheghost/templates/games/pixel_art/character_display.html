@@ -1,0 +1,117 @@
+{% extends "base.html"%} {% block title %}Home{% endblock %} {% block
+head_link_script %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='pages/games/pixel_art/character_display.css')}}" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap"
+  rel="stylesheet" />
+<script src="https://unpkg.com/htmx.org@1.9.5"></script>
+{% endblock %} {% block content %}
+<div class="Character_Display_Container">
+  <div class="CharacterContainer">
+    <div class="character_display">
+      <div class="Character {{sz_cls}}" id="Character_main">
+        <img
+          src="{{url_for('static', filename=chr)}}"
+          alt="Character Sheet"
+          class="characterSpriteSheet pixelart {{sz_cls}}"
+          id="characterSprite" />
+      </div>
+      <input type="hidden" value="{{chr}}" name="chr_selected" />
+      <input type="hidden" value="{{sz_cls}}" name="chr_class" />
+      <input type="hidden" value="direction" name="display" />
+    </div>
+    <div class="move_buttons">
+      <img
+        src="{{url_for('static', filename='pages/games/pixel_art/buttons/arrow button.png')}}"
+        alt="pixel button left arrows"
+        class="p_button pixelart btn_left"
+        hx-get="/character_display/face_left"
+        hx-target="#Character_main"
+        hx-trigger="click"
+        hx-swap="outerHTML"
+        hx-include="[name='chr_selected'], [name='chr_class'],[name='display']" />
+      <img
+        src="{{url_for('static', filename='pages/games/pixel_art/buttons/arrow button.png')}}"
+        alt="pixel button right arrows"
+        class="p_button pixelart btn_right"
+        hx-get="/character_display/face_right"
+        hx-target="#Character_main"
+        hx-trigger="click"
+        hx-swap="outerHTML"
+        hx-include="[name='chr_selected'], [name='chr_class'],[name='display']" />
+      <img
+        src="{{url_for('static', filename='pages/games/pixel_art/buttons/arrow button.png')}}"
+        alt="pixel button up arrows"
+        class="p_button pixelart btn_back"
+        hx-get="/character_display/face_back"
+        hx-target="#Character_main"
+        hx-trigger="click"
+        hx-swap="outerHTML"
+        hx-include="[name='chr_selected'], [name='chr_class'],[name='display']" />
+      <img
+        src="{{url_for('static', filename='pages/games/pixel_art/buttons/arrow button.png')}}"
+        alt="pixel button down arrows"
+        class="p_button pixelart btn_front"
+        hx-get="/character_display/face_front"
+        hx-target="#Character_main"
+        hx-trigger="click"
+        hx-swap="outerHTML"
+        hx-include="[name='chr_selected'], [name='chr_class'],[name='display']" />
+      <img
+        src="{{url_for('static', filename='pages/games/pixel_art/buttons/Buttons.png')}}"
+        alt="Coin Buttons"
+        class="p_button pixelart" />
+      <img
+        src="{{url_for('static', filename='pages/games/pixel_art/buttons/Buttons.png')}}"
+        alt="Coin Buttons"
+        class="p_button pixelart"
+        hx-get="/character_display/face_front"
+        hx-target=".move_buttons"
+        hx-trigger="click"
+        hx-swap="outerHTML" />
+    </div>
+  </div>
+  <div class="DescriptionContainer">
+    <div class="title_image">
+      <img
+        src="{{url_for('static', filename='pages/games/pixel_art/placeholder/Banner Image.png')}}"
+        alt="Banner Imagge"
+        class="banner_image pixelart" />
+    </div>
+    <div class="name_section">
+      <ul class="descriptors">
+        <li>Name: {{chr_name}}</li>
+        <li>Date: {{chr_date}}</li>
+        <li><a href="{{chr_inspo}}">Inspiration: {{chr_name}}</a></li>
+      </ul>
+    </div>
+    <div class="description_link">
+      <a href="#">
+      <img
+        src="{{url_for('static', filename='pages/games/pixel_art/buttons/Instagram Pixel.png')}}"
+        alt="Instagram Pixel Icon"
+        class="p_link p_button pixelart" /></a>
+      <a href="#">
+      <img
+        src="{{url_for('static', filename='pages/games/pixel_art/buttons/Tumblr Pixel.png')}}"
+        alt="Tumblr Pixel Icon"
+        class="p_link p_button pixelart" /></a>
+      <a href="#">
+      <img
+        src="{{url_for('static', filename='pages/games/pixel_art/buttons/Twitter Pixel.png')}}"
+        alt="Twitter Pixel Icon"
+        class="p_link p_button pixelart" /></a>
+    </div>
+    <div class="description_button">
+      <button class="freeRoam"></button>
+      <a href="{{ url_for('pixel') }}">
+        <button class="characterSelect">Character Select</button>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block afterBodyScript %}{% endblock %}

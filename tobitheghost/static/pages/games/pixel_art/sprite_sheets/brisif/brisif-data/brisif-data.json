@@ -1,11 +1,11 @@
 {
-    "Char_name":"character_name-data",
+    "Char_name":"brisif-data",
     "Char_icon":{
-        "title":"character_name-icon",
+        "title":"brisif-icon",
         "path":""
     },
     "Char_Spritesheet":{
-        "title":"character_name-spritesheet",
+        "title":"brisif-spritesheet",
         "path":"",
         "number_of_actions":0,
         "spritesheet_width":0.0,
@@ -44,14 +44,12 @@
         }
     },
     "Char_Descriptors":{
-        "name":"Character Name",
-        "date":"12/20/1994",
+        "name":"Brisif",
+        "date":"11/25/2023",
         "Insperation":[{
-            "name":"",
-            "link":""
-        }],
-        "banner_image name":"",
-        "banner_image path":""
+            "name":"Brittney Briggs",
+            "link":"https://www.instagram.com/unicorn_dust101/"
+        }]
     },
     "URLS":{
         "instagram":"",

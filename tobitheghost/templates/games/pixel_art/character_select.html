@@ -1,0 +1,92 @@
+{% extends "base.html"%} {% block title %}Tobi Theo Ghost{% endblock %} {% block
+head_link_script %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='pages/games/pixel_art/character_select.css')}}" />
+{% endblock %} {% block content %}
+
+<section id="character_selection">
+
+  <section id="character_wrapper">
+    <a id="character_link" href="{{ url_for('chr_display',selected_chr='Tammy') }}">
+      <div id="character_icon_wrapper">
+        <div id="top_img_wrapper">
+          <div id="img_icon_wrapper">
+            <img
+              class="icon_image img1"
+              src="{{url_for('static', filename='pages/games/pixel_art/placeholder/Tammy Pixel Art-export.gif')}}"
+              alt=""
+              name="" />
+          </div>
+        </div>
+        <div id="icon_description">
+          <div id="icon_title">
+            <h2>Tammy</h2>
+          </div>
+          <div id="icon_info">
+            <h3 id="character_info_text">
+              Practicing Pixel art using <a href="https://opengameart.org/users/isaiah658">isaiah658</a>'s SpriteSheet as a template. 
+            </h3>
+          </div>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <section id="character_wrapper">
+    <a id="character_link" href="{{ url_for('chr_display',selected_chr='Brisif')}}">
+      <div id="character_icon_wrapper">
+        <div id="top_img_wrapper">
+          <div id="img_icon_wrapper">
+            <img
+              class="icon_image img2"
+              src="{{url_for('static', filename='pages/games/pixel_art/placeholder/Brisif_idle.gif')}}"
+              alt=""
+              name="" />
+          </div>
+        </div>
+        <div id="icon_description">
+          <div id="icon_title">
+            <h2>Brisif</h2>
+          </div>
+          <div id="icon_info">
+            <h3 id="character_info_text">
+              Practicing Pixel art using a combinations of references as tribute to Brisif's style.
+            </h3>
+          </div>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- <section id="character_wrapper">
+    <a id="character_link" href="{{ url_for('chr_display',selected_chr='Brisif') }}">
+      <div id="character_icon_wrapper">
+        <div id="top_img_wrapper">
+          <div id="img_icon_wrapper">
+            <img
+              class="icon_image img3"
+              src="{{url_for('static', filename='pages/games/pixel_art/placeholder/cadd927401b69439351562c53a290d5c.gif')}}"
+              alt=""
+              name="" />
+          </div>
+        </div>
+        <div id="icon_description">
+          <div id="icon_title">
+            <h2>Placeholder</h2>
+          </div>
+          <div id="icon_info">
+            <h3 id="character_info_text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum
+              consequatur est quo nisi eos quaerat praesentium, fuga ea sed vero
+              rem suscipit debitis nihil
+            </h3>
+          </div>
+        </div>
+      </div>
+    </a>
+  </section> -->
+
+</section>
+
+{% endblock %}

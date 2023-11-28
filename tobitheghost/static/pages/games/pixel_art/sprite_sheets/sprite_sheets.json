@@ -1,0 +1,89 @@
+{
+    "Name": {
+        "directory_name": "character_templates",
+        "data": false,
+        "icon": false,
+        "banner_image": false,
+        "extra_dir": [
+            {
+                "idle": false,
+                "walking": false,
+                "buttons": {
+                    "descriptions": false,
+                    "directional": false,
+                    "aux": false
+                },
+                "spritesheet": false
+            }
+        ],
+        "ready": false,
+        "need": [
+            "this is a template, not to be used"
+        ]
+    },
+    "Naruto Inspiration": {
+        "directory_name": "naruto_inspo",
+        "data": true,
+        "icon": false,
+        "banner_image": false,
+        "extra_dir": [
+            {
+                "spritesheet": true
+            }
+        ],
+        "ready": true,
+        "need": [
+            "Icon",
+            "face_left",
+            "face_back",
+            "Insperation->name:Someone2040->link// I need to find their account,URLS"
+        ]
+    },
+    "Tammy Sword": {
+        "directory_name": "tammy_iso",
+        "data": true,
+        "icon": true,
+        "banner_image": false,
+        "extra_dir": [
+            {
+                "spritesheet": true
+            }
+        ],
+        "ready": true,
+        "need": [
+            "URLS"
+        ]
+    },
+    "Template ISO": {
+        "directory_name": "template_iso",
+        "data": true,
+        "icon": false,
+        "banner_image": false,
+        "extra_dir": [
+            {
+                "spritesheet": true
+            }
+        ],
+        "ready": true,
+        "need": [
+            "URLS",
+            "Icon"
+        ]
+    },
+    "Brittney Briggs": {
+        "directory_name": "brisif",
+        "data": true,
+        "icon": false,
+        "banner_image": false,
+        "extra_dir": [
+            {
+                "idle": false,
+                "walking": false
+            }
+        ],
+        "ready": false,
+        "need": [
+            "Everything"
+        ]
+    }
+}
