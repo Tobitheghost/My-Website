@@ -16,6 +16,8 @@ import logging
 from .logs import req_log
 from .parcel_search_data import data, land_use_code
 from .movie_data import movieData
+from .templates.games.pixel_art.display_data import sptire_data_j, character_names
+from pprint import pprint
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -328,3 +330,20 @@ def chr_display(selected_chr):
             chr=character,
             sz_cls=size_class,
         )
+
+
+@app.route("/character_editor", methods=["GET", "POST"])
+def editor():
+    chr_select = character_names
+
+    if request.method == "POST":
+        chr_name = request.form["chr_select"]
+        name = sptire_data_j(chr_name)
+        pprint(name[chr_name])
+        return render_template(
+            "html_utils/json_data copy.html",
+            chr_select=chr_select,
+            chr_dict=name[chr_name],
+        )
+
+    return render_template("html_utils/json_data.html", chr_select=chr_select)

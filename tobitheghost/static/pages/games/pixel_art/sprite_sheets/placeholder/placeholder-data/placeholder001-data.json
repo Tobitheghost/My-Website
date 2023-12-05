@@ -1,49 +1,49 @@
 {
-    "Char_name":"tammy_iso",
+    "Char_name":"",
     "Char_icon":{
-        "title":"tammy_iso-icon",
-        "path":"tobitheghost/static/pages/games/pixel_art/sprite_sheets/tammy_iso/tammy_iso-icon/tammy_iso-icon.gif"
+        "title":"",
+        "path":""
     },
     "Char_Spritesheet":{
-        "title":"tammy_iso-spritesheet",
-        "path":"tobitheghost/static/pages/games/pixel_art/sprite_sheets/tammy_iso/tammy_iso-spritesheet/tammy_iso-spritesheet.png",
-        "number_of_actions":4,
-        "spritesheet_width":64,
-        "spritesheet_height":80,
-        "frame_width":16,
-        "frame_height":20,
+        "title":"",
+        "path":"",
+        "number_of_actions":"",
+        "spritesheet_width":"",
+        "spritesheet_height":"",
+        "frame_width":"",
+        "frame_height":"",
         "Animations":{
             "face_left":{
                 "path":"",
-                "numb":1,           
-                "total_frames":4,    
-                "fps":1,             
-                "pixel_size":25,
-                "button_key":"left arrow"
+                "numb":"",           
+                "total_frames":"",    
+                "fps":"",             
+                "pixel_size":"",
+                "button_key":""
             },
             "face_right":{
                 "path":"",
-                "numb":2,           
-                "total_frames":4,   
-                "fps":1,         
-                "pixel_size":25,
-                "button_key":"right arrow"
+                "numb":"",           
+                "total_frames":"",   
+                "fps":"",         
+                "pixel_size":"",
+                "button_key":""
             },
             "face_back":{
                 "path":"",
-                "numb":3,
-                "total_frames":4, 
-                "fps":1,          
-                "pixel_size":25,
-                "button_key":"up arrow"
+                "numb":"",
+                "total_frames":"", 
+                "fps":"",          
+                "pixel_size":"",
+                "button_key":""
             },
             "face_front":{
                 "path":"",
-                "numb":0,         
-                "total_frames":4,
-                "fps":1,         
-                "pixel_size":25,
-                "button_key":"down arrow"
+                "numb":"",         
+                "total_frames":"",
+                "fps":"",         
+                "pixel_size":"",
+                "button_key":""
             },
             "idle":{
                 "path":"",
@@ -66,41 +66,36 @@
                     "alt_button_01":{
                         "title":"",
                         "path":"",
-                        "type":""
+                        "type":"PNG or HTML Template"
                     }
                 },
                 "directional":{
                     "alt_button_01":{
                         "title":"",
                         "path":"",
-                        "type":""
+                        "type":"PNG or HTML Template"
                     }
                 },
                 "aux":{
                     "alt_button_01":{
                         "title":"",
                         "path":"",
-                        "type":""
+                        "type":"PNG"
                     }
                 }
             }
         }
     },
     "Char_Descriptors":{
-        "name":"Tammy Sword",
-        "date":"11/25/2023",
+        "name":"",
+        "date":"",
         "Insperation":[{
-            "name":"isaiah658",
-            "link":"https://opengameart.org/users/isaiah658"
-        },
-        {
-            "name":"Tammy Weese",
-            "link":"https://www.instagram.com/tammy.weese.142/"
+            "name":"",
+            "link":""
         }],
         "banner_image":{
             "name":"",
             "path":""
-    }
     },
     "URLS":{
         "instagram":"",
@@ -108,7 +103,8 @@
         "twitter":""
     },
     "Status":{
-        "Ready":true,
-        "Need":true
+        "Ready":"",
+        "Need":""
     }
     }
+}

@@ -1,21 +1,59 @@
 {
     "Name": {
         "directory_name": "character_templates",
-        "data": false,
-        "icon": false,
+        "data": {
+            "exist": true,
+            "path": ""
+        },
+        "icon": {
+            "exist": true,
+            "path": ""
+        },
         "banner_image": false,
-        "extra_dir": [
-            {
-                "idle": false,
-                "walking": false,
-                "buttons": {
-                    "descriptions": false,
-                    "directional": false,
-                    "aux": false
+        "extra_dir": {
+            "face_left": {
+                "exist": false,
+                "path": ""
+            },
+            "face_right": {
+                "exist": false,
+                "path": ""
+            },
+            "face_back": {
+                "exist": false,
+                "path": ""
+            },
+            "face_front": {
+                "exist": false,
+                "path": ""
+            },
+            "idle": {
+                "exist": false,
+                "path": ""
+            },
+            "walking": {
+                "exist": false,
+                "path": ""
+            },
+            "buttons": {
+                "descriptions": {
+                    "exist": false,
+                    "path": ""
                 },
-                "spritesheet": false
+                "directional": {
+                    "exist": false,
+                    "path": ""
+                },
+                "aux": {
+                    "exist": false,
+                    "path": ""
+                }
+            },
+            "spritesheet": {
+                "exist": false,
+                "path": ""
             }
-        ],
+        },
         "ready": false,
         "need": [
             "this is a template, not to be used"
@@ -23,32 +61,122 @@
     },
     "Naruto Inspiration": {
         "directory_name": "naruto_inspo",
-        "data": true,
-        "icon": false,
+        "data": {
+            "exist": true,
+            "path": "z:/Coding/New Site/tobitheghost/static/pages/games/pixel_art/sprite_sheets/naruto_inspo/naruto_inspo-data/naruto_inspo-data.json"
+        },
+        "icon": {
+            "exist": false,
+            "path": ""
+        },
         "banner_image": false,
-        "extra_dir": [
-            {
-                "spritesheet": true
+        "extra_dir": {
+            "face_left": {
+                "exist": false,
+                "path": ""
+            },
+            "face_right": {
+                "exist": false,
+                "path": ""
+            },
+            "face_back": {
+                "exist": false,
+                "path": ""
+            },
+            "face_front": {
+                "exist": false,
+                "path": ""
+            },
+            "idle": {
+                "exist": false,
+                "path": ""
+            },
+            "walking": {
+                "exist": false,
+                "path": ""
+            },
+            "buttons": {
+                "descriptions": {
+                    "exist": false,
+                    "path": ""
+                },
+                "directional": {
+                    "exist": false,
+                    "path": ""
+                },
+                "aux": {
+                    "exist": false,
+                    "path": ""
+                }
+            },
+            "spritesheet": {
+                "exist": true,
+                "path": "Z:/Coding/New Site/tobitheghost/static/pages/games/pixel_art/sprite_sheets/naruto_inspo/naruto_inspo-spritesheet/naruto_inspo-spritesheet.png"
             }
-        ],
+        },
         "ready": true,
         "need": [
-            "Icon",
-            "face_left",
-            "face_back",
-            "Insperation->name:Someone2040->link// I need to find their account,URLS"
+            "Char_icon:title && :path",
+            "Char_Spritesheet:Animations:face_left",
+            "Char_Spritesheet:Animations:face_back",
+            "Char_Descriptors:Insperation:link:'Someone2040 link'"
         ]
     },
     "Tammy Sword": {
         "directory_name": "tammy_iso",
-        "data": true,
-        "icon": true,
+        "data": {
+            "exist": true,
+            "path": "z:/Coding/New Site/tobitheghost/static/pages/games/pixel_art/sprite_sheets/tammy_iso/tammy_iso-data/tammy_iso-data.json"
+        },
+        "icon": {
+            "exist": true,
+            "path": "z:/Coding/New Site/tobitheghost/static/pages/games/pixel_art/sprite_sheets/tammy_iso/tammy_iso-icon/tammy_iso-icon.gif"
+        },
         "banner_image": false,
-        "extra_dir": [
-            {
-                "spritesheet": true
+        "extra_dir": {
+            "face_left": {
+                "exist": false,
+                "path": ""
+            },
+            "face_right": {
+                "exist": false,
+                "path": ""
+            },
+            "face_back": {
+                "exist": false,
+                "path": ""
+            },
+            "face_front": {
+                "exist": false,
+                "path": ""
+            },
+            "idle": {
+                "exist": false,
+                "path": ""
+            },
+            "walking": {
+                "exist": false,
+                "path": ""
+            },
+            "buttons": {
+                "descriptions": {
+                    "exist": false,
+                    "path": ""
+                },
+                "directional": {
+                    "exist": false,
+                    "path": ""
+                },
+                "aux": {
+                    "exist": false,
+                    "path": ""
+                }
+            },
+            "spritesheet": {
+                "exist": true,
+                "path": "Z:/Coding/New Site/tobitheghost/static/pages/games/pixel_art/sprite_sheets/tammy_iso/tammy_iso-spritesheet/tammy_iso-spritesheet.png"
             }
-        ],
+        },
         "ready": true,
         "need": [
             "URLS"
@@ -56,14 +184,59 @@
     },
     "Template ISO": {
         "directory_name": "template_iso",
-        "data": true,
-        "icon": false,
+        "data": {
+            "exist": true,
+            "path": "z:/Coding/New Site/tobitheghost/static/pages/games/pixel_art/sprite_sheets/template_iso/template_iso-data/template_iso-data.json"
+        },
+        "icon": {
+            "exist": false,
+            "path": ""
+        },
         "banner_image": false,
-        "extra_dir": [
-            {
-                "spritesheet": true
+        "extra_dir": {
+            "face_left": {
+                "exist": false,
+                "path": ""
+            },
+            "face_right": {
+                "exist": false,
+                "path": ""
+            },
+            "face_back": {
+                "exist": false,
+                "path": ""
+            },
+            "face_front": {
+                "exist": false,
+                "path": ""
+            },
+            "idle": {
+                "exist": false,
+                "path": ""
+            },
+            "walking": {
+                "exist": false,
+                "path": ""
+            },
+            "buttons": {
+                "descriptions": {
+                    "exist": false,
+                    "path": ""
+                },
+                "directional": {
+                    "exist": false,
+                    "path": ""
+                },
+                "aux": {
+                    "exist": false,
+                    "path": ""
+                }
+            },
+            "spritesheet": {
+                "exist": true,
+                "path": "z:/Coding/New Site/tobitheghost/static/pages/games/pixel_art/sprite_sheets/template_iso/template_iso-spritesheet/template_iso-spritesheet.png"
             }
-        ],
+        },
         "ready": true,
         "need": [
             "URLS",
@@ -72,18 +245,62 @@
     },
     "Brittney Briggs": {
         "directory_name": "brisif",
-        "data": true,
-        "icon": false,
+        "data": {
+            "exist": true,
+            "path": "z:/Coding/New Site/tobitheghost/static/pages/games/pixel_art/sprite_sheets/brisif/brisif-data/brisif-data.json"
+        },
+        "icon": {
+            "exist": false,
+            "path": ""
+        },
         "banner_image": false,
-        "extra_dir": [
-            {
-                "idle": false,
-                "walking": false
+        "extra_dir": {
+            "face_left": {
+                "exist": false,
+                "path": ""
+            },
+            "face_right": {
+                "exist": false,
+                "path": ""
+            },
+            "face_back": {
+                "exist": false,
+                "path": ""
+            },
+            "face_front": {
+                "exist": false,
+                "path": ""
+            },
+            "idle": {
+                "exist": false,
+                "path": ""
+            },
+            "walking": {
+                "exist": false,
+                "path": ""
+            },
+            "buttons": {
+                "descriptions": {
+                    "exist": false,
+                    "path": ""
+                },
+                "directional": {
+                    "exist": false,
+                    "path": ""
+                },
+                "aux": {
+                    "exist": false,
+                    "path": ""
+                }
+            },
+            "spritesheet": {
+                "exist": false,
+                "path": ""
             }
-        ],
+        },
         "ready": false,
         "need": [
-            "Everything"
+            "this is a template, not to be used"
         ]
     }
 }

@@ -1,198 +1,660 @@
 import json
+from os import path
 from pprint import pprint
 
 print_stuff = False
-
-
-def banner_path(chr_json_data, chr_json_data_file, ready, not_ready, main_dict):
-    chr_banner_image = chr_json_data["banner_image"]
-    if chr_banner_image == False:
-        chr_banner_image_path = "placeholder/placeholder-banner_image/banner_image.png"
-        not_ready["banner_image"] = chr_banner_image
-    else:
-        chr_banner_image_path = chr_json_data_file["Char_Descriptors"][
-            "banner_image path"
-        ]
-
-    ready["banner_image"] = chr_banner_image_path
-    main_dict["banner_image-path"] = chr_banner_image_path
-
-
-def icon_path(chr_json_data, chr_json_data_file, ready, not_ready, main_dict):
-    chr_icon_image = chr_json_data["icon"]
-    if chr_icon_image == False:
-        chr_icon_image_path = "placeholder/placeholder-icon/icon.png"
-        not_ready["icon"] = chr_icon_image
-    else:
-        chr_icon_image_path = chr_json_data_file["Char_icon"]["path"]
-    ready["icon"] = chr_icon_image_path
-    main_dict["icon-path"] = chr_icon_image_path
-
-
-def spritesheet_path(chr_json_data, chr_json_data_file, ready, not_ready, main_dict):
-    main_dict["spritesheet-path"] = chr_json_data_file["Char_Spritesheet"]["path"]
-    main_dict["number_of_actions"] = chr_json_data_file["Char_Spritesheet"][
-        "number_of_actions"
-    ]
-    main_dict["spritesheet-width"] = chr_json_data_file["Char_Spritesheet"][
-        "spritesheet_width"
-    ]
-    main_dict["spritesheet-height"] = chr_json_data_file["Char_Spritesheet"][
-        "spritesheet_height"
-    ]
-    main_dict["spritesheet_frame-width"] = chr_json_data_file["Char_Spritesheet"][
-        "frame_width"
-    ]
-    main_dict["spritesheet_frame-height"] = chr_json_data_file["Char_Spritesheet"][
-        "frame_height"
-    ]
-    direction = [
-        "left",
-        "right",
-        "back",
-        "front",
-    ]
-    spr_anmtn = chr_json_data_file["Char_Spritesheet"]["Animations"]
-    for car in direction:
-        main_dict[f"spritesheet-facing_{car}-number"] = spr_anmtn["face_left"]["numb"]
-        main_dict[f"spritesheet-facing_{car}-total_frames"] = spr_anmtn["face_left"][
-            "total_frames"
-        ]
-        main_dict[f"spritesheet-facing_{car}-fps"] = spr_anmtn["face_left"]["fps"]
-        main_dict[f"spritesheet-facing_{car}-pixel"] = spr_anmtn["face_left"][
-            "pixel_size"
-        ]
-        main_dict[f"spritesheet-facing_{car}-button_key"] = spr_anmtn["face_left"][
-            "button_key"
-        ]
-
-    main_dict["description-name"] = chr_json_data_file["Char_Descriptors"]["name"]
-    main_dict["description-date"] = chr_json_data_file["Char_Descriptors"]["date"]
-    main_dict["description_inspiration-name"] = chr_json_data_file["Char_Descriptors"][
-        "Insperation"
-    ][0]["name"]
-    main_dict["description_inspiration-link"] = chr_json_data_file["Char_Descriptors"][
-        "Insperation"
-    ][0]["link"]
-
-
-def url_links(chr_json_data, chr_json_data_file, ready, not_ready, main_dict):
-    URL_instagram = chr_json_data_file["URLS"]["instagram"]
-    URL_tumblr = chr_json_data_file["URLS"]["tumblr"]
-    URL_twitter = chr_json_data_file["URLS"]["twitter"]
-
-
-def data_file_query(chr_data, dir_name, subdir_name, ready, not_ready, main_dict):
-    data = chr_data["data"]
-    e_dir = chr_data["extra_dir"][0]
-    if data == True:
-        with open(
-            f"tobitheghost/static/pages/games/pixel_art/sprite_sheets/{dir_name}/{subdir_name}-data/{subdir_name}-data.json"
-        ) as chr_data_file:
-            chr_json_data = json.load(chr_data_file)
-            chr_data_file.close()
-
-        banner_path(chr_data, chr_json_data, ready, not_ready, main_dict)
-
-        icon_path(chr_data, chr_json_data, ready, not_ready, main_dict)
-
-        spritesheet_path(chr_data, chr_json_data, ready, not_ready, main_dict)
-
-        url_links(chr_data, chr_json_data, ready, not_ready, main_dict)
-
-        for key in e_dir:
-            if type(extra_dir[key]) == dict:
-                for s_key in extra_dir[key]:
-                    extra_dir_paths(
-                        chr_directory_name,
-                        chr_subdirectory_name,
-                        extra_dir[key],
-                        key,
-                        s_key,
-                    )
-        else:
-            extra_dir_paths(chr_directory_name, chr_subdirectory_name, extra_dir, key)
-    return
-
-
-def extra_dir_paths(
-    dir_name: str,
-    subdir_name: str,
-    parent_dict: dict,
-    parent_dict_key,
-    extra_dict_key="",
-):
-    key = parent_dict_key
-    if extra_dict_key == "":
-        chr_dir_3 = f""
-        k1 = parent_dict_key
-    else:
-        sub_key = extra_dict_key
-        chr_dir_3 = f"/character_name-{key}_{sub_key}"
-        k1 = extra_dict_key
-    chr_dir_1 = dir_name
-    chr_dir_2 = f"/{subdir_name}-{key}"
-
-    chr_directory_path = f"{chr_dir_1}{chr_dir_2}{chr_dir_3}"
-
-    if parent_dict[k1] == False:
-        not_ready_extra_dir[k1] = chr_directory_path
-        # print(f"\t\tNot Ready Directory: {chr_directory_path}")
-    else:
-        ready_extra_dir[k1] = chr_directory_path
-        # print(f"\t\tReady Directory: {chr_directory_path}")
-
+master_dict = {}
 
 with open(
     "tobitheghost/static/pages/games/pixel_art/sprite_sheets/sprite_sheets.json"
 ) as json_data:
-    d = json.load(json_data)
+    entry_names = json.load(json_data)
     json_data.close()
 
-character_names = [x for x in d]
+character_names = [x for x in entry_names]
 character_database: []
+# print(character_names)
 
-for entries in character_names:
-    not_ready_extra_dir = {}
-    ready_extra_dir = {}
-    char_dict = {}
-    chr_json = d[entries]
-    # pprint(chr_json)
-    main_dict = char_dict[entries] = {}
-    main_dict["ready"] = chr_json["ready"]
-    chr_directory_name = chr_json["directory_name"]
-    main_dict["directory-name"] = chr_directory_name
-    chr_data = chr_json["data"]
-    extra_dir = chr_json["extra_dir"][0]
-    chr_ready = chr_json["ready"]
-    chr_icon = chr_json["icon"]
-    chr_need = chr_json["need"]
-    chr_banner_image = chr_json["banner_image"]
-    if chr_directory_name == "character_templates":
-        chr_subdirectory_name = "character_name"
-    else:
-        chr_subdirectory_name = chr_directory_name
+def sptire_data_j(entries, thespritefile=entry_names):
+    chr_name = ""
+    directory_name = ""
+    data_path = ""
+    data_exist = False
+    icon_exist = False
+    icon_path = ""
+    banner_image_bool = False
+    extradir_faceleft_bool = False
+    extradir_faceleft_path = ""
+    extradir_faceright_bool = False
+    extradir_faceright_path = ""
+    extradir_faceback_bool = False
+    extradir_faceback_path = ""
+    extradir_facefront_bool = False
+    extradir_facefront_path = ""
+    extradir_idle_bool = False
+    extradir_idle_path = ""
+    extradir_walking_bool = False
+    extradir_walking_path = ""
+    extradir_buttons_descriptions_bool = False
+    extradir_buttons_descriptions_path = ""
+    extradir_buttons_directional_bool = False
+    extradir_buttons_directional_path = ""
+    extradir_buttons_aux_bool = False
+    extradir_buttons_aux_path = ""
+    extradir_spritesheet_bool = False
+    extradir_spritesheet_path = ""
+    ready_status = False
+    need_list = ""
+    char_name = ""
+    char_icon_title = ""
+    char_icon_path = ""
+    char_spritesheet_title = ""
+    char_spritesheet_path = ""
+    char_spritesheet_number_of_actions = ""
+    char_spritesheet_spritesheet_width = ""
+    char_spritesheet_spritesheet_height = ""
+    char_spritesheet_frame_width = ""
+    char_spritesheet_frame_height = ""
+    char_spritesheet_Animations_faceleft_path = ""
+    char_spritesheet_Animations_faceleft_numb = ""
+    char_spritesheet_Animations_faceleft_total_frames = ""
+    char_spritesheet_Animations_faceleft_fps = ""
+    char_spritesheet_Animations_faceleft_pixel_size = ""
+    char_spritesheet_Animations_faceleft_button_key = ""
+    char_spritesheet_Animations_faceright_path = ""
+    char_spritesheet_Animations_faceright_numb = ""
+    char_spritesheet_Animations_faceright_total_frames = ""
+    char_spritesheet_Animations_faceright_fps = ""
+    char_spritesheet_Animations_faceright_pixel_size = ""
+    char_spritesheet_Animations_faceright_button_key = ""
+    char_spritesheet_Animations_faceback_path = ""
+    char_spritesheet_Animations_faceback_numb = ""
+    char_spritesheet_Animations_faceback_total_frames = ""
+    char_spritesheet_Animations_faceback_fps = ""
+    char_spritesheet_Animations_faceback_pixel_size = ""
+    char_spritesheet_Animations_faceback_button_key = ""
+    char_spritesheet_Animations_facefront_path = ""
+    char_spritesheet_Animations_facefront_numb = ""
+    char_spritesheet_Animations_facefront_total_frames = ""
+    char_spritesheet_Animations_facefront_fps = ""
+    char_spritesheet_Animations_facefront_pixel_size = ""
+    char_spritesheet_Animations_facefront_button_key = ""
+    char_spritesheet_Animations_idle_path = ""
+    char_spritesheet_Animations_idle_numb = ""
+    char_spritesheet_Animations_idle_total_frames = ""
+    char_spritesheet_Animations_idle_fps = ""
+    char_spritesheet_Animations_idle_pixel_size = ""
+    char_spritesheet_Animations_idle_button_key = ""
+    char_spritesheet_Animations_walking_path = ""
+    char_spritesheet_Animations_walking_numb = ""
+    char_spritesheet_Animations_walking_total_frames = ""
+    char_spritesheet_Animations_walking_fps = ""
+    char_spritesheet_Animations_walking_pixel_size = ""
+    char_spritesheet_Animations_walking_button_key = ""
+    char_spritesheet_Animations_buttons_descriptions_alt_b_1_title = ""
+    char_spritesheet_Animations_buttons_descriptions_alt_b_1_path = ""
+    char_spritesheet_Animations_buttons_descriptions_alt_b_1_type = ""
+    char_spritesheet_Animations_buttons_directional_alt_b_1_title = ""
+    char_spritesheet_Animations_buttons_directional_alt_b_1_path = ""
+    char_spritesheet_Animations_buttons_directional_alt_b_1_type = ""
+    char_spritesheet_Animations_buttons_aux_alt_b_1_title = ""
+    char_spritesheet_Animations_buttons_aux_alt_b_1_path = ""
+    char_spritesheet_Animations_buttons_aux_alt_b_1_type = ""
+    char_descriptors_name = ""
+    char_descriptors_date = ""
+    char_descriptors_Insperation_name = ""
+    char_descriptors_Insperation_link = ""
+    char_bannerimage_name = "Placeholder Banner Image"
+    char_bannerimage_path = "Z:/Coding/New Site/tobitheghost/static/pages/games/pixel_art/sprite_sheets/placeholder/placeholder-banner_image/banner_image.png"
+    url_insta = ""
+    url_tumblr = ""
+    url_twitter = ""
+    status_ready = False
+    status_need = False
 
-    main_dict["sub_directory-name"] = chr_subdirectory_name
+    dict_data = {
+        "chr_name": chr_name,
+        "directory_name": directory_name,
+        "data_path": data_path,
+        "data_exist": data_exist,
+        "icon_exist": icon_exist,
+        "icon_path": icon_path,
+        "banner_image_bool": banner_image_bool,
+        "extradir_faceleft_bool": extradir_faceleft_bool,
+        "extradir_faceleft_path": extradir_faceleft_path,
+        "extradir_faceright_bool": extradir_faceright_bool,
+        "extradir_faceright_path": extradir_faceright_path,
+        "extradir_faceback_bool": extradir_faceback_bool,
+        "extradir_faceback_path": extradir_faceback_path,
+        "extradir_facefront_bool": extradir_facefront_bool,
+        "extradir_facefront_path": extradir_facefront_path,
+        "extradir_idle_bool": extradir_idle_bool,
+        "extradir_idle_path": extradir_idle_path,
+        "extradir_walking_bool": extradir_walking_bool,
+        "extradir_walking_path": extradir_walking_path,
+        "extradir_buttons_descriptions_bool": extradir_buttons_descriptions_bool,
+        "extradir_buttons_descriptions_path": extradir_buttons_descriptions_path,
+        "extradir_buttons_directional_bool": extradir_buttons_directional_bool,
+        "extradir_buttons_directional_path": extradir_buttons_directional_path,
+        "extradir_buttons_aux_bool": extradir_buttons_aux_bool,
+        "extradir_buttons_aux_path": extradir_buttons_aux_path,
+        "extradir_spritesheet_bool": extradir_spritesheet_bool,
+        "extradir_spritesheet_path": extradir_spritesheet_path,
+        "ready_status": ready_status,
+        "need_list": need_list,
+        "char_name": char_name,
+        "char_icon_title": char_icon_title,
+        "char_icon_path": char_icon_path,
+        "char_spritesheet_title": char_spritesheet_title,
+        "char_spritesheet_path": char_spritesheet_path,
+        "char_spritesheet_number_of_actions": char_spritesheet_number_of_actions,
+        "char_spritesheet_spritesheet_width": char_spritesheet_spritesheet_width,
+        "char_spritesheet_spritesheet_height": char_spritesheet_spritesheet_height,
+        "char_spritesheet_frame_width": char_spritesheet_frame_width,
+        "char_spritesheet_frame_height": char_spritesheet_frame_height,
+        "char_spritesheet_Animations_faceleft_path": char_spritesheet_Animations_faceleft_path,
+        "char_spritesheet_Animations_faceleft_numb": char_spritesheet_Animations_faceleft_numb,
+        "char_spritesheet_Animations_faceleft_total_frames": char_spritesheet_Animations_faceleft_total_frames,
+        "char_spritesheet_Animations_faceleft_fps": char_spritesheet_Animations_faceleft_fps,
+        "char_spritesheet_Animations_faceleft_pixel_size": char_spritesheet_Animations_faceleft_pixel_size,
+        "char_spritesheet_Animations_faceleft_button_key": char_spritesheet_Animations_faceleft_button_key,
+        "char_spritesheet_Animations_faceright_path": char_spritesheet_Animations_faceright_path,
+        "char_spritesheet_Animations_faceright_numb": char_spritesheet_Animations_faceright_numb,
+        "char_spritesheet_Animations_faceright_total_frames": char_spritesheet_Animations_faceright_total_frames,
+        "char_spritesheet_Animations_faceright_fps": char_spritesheet_Animations_faceright_fps,
+        "char_spritesheet_Animations_faceright_pixel_size": char_spritesheet_Animations_faceright_pixel_size,
+        "char_spritesheet_Animations_faceright_button_key": char_spritesheet_Animations_faceright_button_key,
+        "char_spritesheet_Animations_faceback_path": char_spritesheet_Animations_faceback_path,
+        "char_spritesheet_Animations_faceback_numb": char_spritesheet_Animations_faceback_numb,
+        "char_spritesheet_Animations_faceback_total_frames": char_spritesheet_Animations_faceback_total_frames,
+        "char_spritesheet_Animations_faceback_fps": char_spritesheet_Animations_faceback_fps,
+        "char_spritesheet_Animations_faceback_pixel_size": char_spritesheet_Animations_faceback_pixel_size,
+        "char_spritesheet_Animations_faceback_button_key": char_spritesheet_Animations_faceback_button_key,
+        "char_spritesheet_Animations_facefront_path": char_spritesheet_Animations_facefront_path,
+        "char_spritesheet_Animations_facefront_numb": char_spritesheet_Animations_facefront_numb,
+        "char_spritesheet_Animations_facefront_total_frames": char_spritesheet_Animations_facefront_total_frames,
+        "char_spritesheet_Animations_facefront_fps": char_spritesheet_Animations_facefront_fps,
+        "char_spritesheet_Animations_facefront_pixel_size": char_spritesheet_Animations_facefront_pixel_size,
+        "char_spritesheet_Animations_facefront_button_key": char_spritesheet_Animations_facefront_button_key,
+        "char_spritesheet_Animations_idle_path": char_spritesheet_Animations_idle_path,
+        "char_spritesheet_Animations_idle_numb": char_spritesheet_Animations_idle_numb,
+        "char_spritesheet_Animations_idle_total_frames": char_spritesheet_Animations_idle_total_frames,
+        "char_spritesheet_Animations_idle_fps": char_spritesheet_Animations_idle_fps,
+        "char_spritesheet_Animations_idle_pixel_size": char_spritesheet_Animations_idle_pixel_size,
+        "char_spritesheet_Animations_idle_button_key": char_spritesheet_Animations_idle_button_key,
+        "char_spritesheet_Animations_walking_path": char_spritesheet_Animations_walking_path,
+        "char_spritesheet_Animations_walking_numb": char_spritesheet_Animations_walking_numb,
+        "char_spritesheet_Animations_walking_total_frames": char_spritesheet_Animations_walking_total_frames,
+        "char_spritesheet_Animations_walking_fps": char_spritesheet_Animations_walking_fps,
+        "char_spritesheet_Animations_walking_pixel_size": char_spritesheet_Animations_walking_pixel_size,
+        "char_spritesheet_Animations_walking_button_key": char_spritesheet_Animations_walking_button_key,
+        "char_spritesheet_Animations_buttons_descriptions_alt_b_1_title": char_spritesheet_Animations_buttons_descriptions_alt_b_1_title,
+        "char_spritesheet_Animations_buttons_descriptions_alt_b_1_path": char_spritesheet_Animations_buttons_descriptions_alt_b_1_path,
+        "char_spritesheet_Animations_buttons_descriptions_alt_b_1_type": char_spritesheet_Animations_buttons_descriptions_alt_b_1_type,
+        "char_spritesheet_Animations_buttons_directional_alt_b_1_title": char_spritesheet_Animations_buttons_directional_alt_b_1_title,
+        "char_spritesheet_Animations_buttons_directional_alt_b_1_path": char_spritesheet_Animations_buttons_directional_alt_b_1_path,
+        "char_spritesheet_Animations_buttons_directional_alt_b_1_type": char_spritesheet_Animations_buttons_directional_alt_b_1_type,
+        "char_spritesheet_Animations_buttons_aux_alt_b_1_title": char_spritesheet_Animations_buttons_aux_alt_b_1_title,
+        "char_spritesheet_Animations_buttons_aux_alt_b_1_path": char_spritesheet_Animations_buttons_aux_alt_b_1_path,
+        "char_spritesheet_Animations_buttons_aux_alt_b_1_type": char_spritesheet_Animations_buttons_aux_alt_b_1_type,
+        "char_descriptors_name": char_descriptors_name,
+        "char_descriptors_date": char_descriptors_date,
+        "char_descriptors_Insperation_name": char_descriptors_Insperation_name,
+        "char_descriptors_Insperation_link": char_descriptors_Insperation_link,
+        "char_bannerimage_name": char_bannerimage_name,
+        "char_bannerimage_path": char_bannerimage_path,
+        "url_insta": url_insta,
+        "url_tumblr": url_tumblr,
+        "url_twitter": url_twitter,
+        "status_ready": status_ready,
+        "status_need": status_need,
+    }
 
-    data_file_query(
-        chr_json,
-        chr_directory_name,
-        chr_subdirectory_name,
-        ready_extra_dir,
-        not_ready_extra_dir,
-        main_dict,
+    def check_data(var, var_str, dict_entry):
+        try:
+            var = dict_entry
+        except KeyError:
+            pass
+        dict_data[var_str] = var
+
+    check_data(chr_name, "chr_name", thespritefile[entries])
+    check_data(
+        directory_name, "directory_name", thespritefile[entries]["directory_name"]
     )
+    check_data(data_path, "data_path", thespritefile[entries]["data"]["path"])
+    check_data(data_exist, "data_exist", thespritefile[entries]["data"]["exist"])
+    check_data(icon_exist, "icon_exist", thespritefile[entries]["icon"]["exist"])
+    check_data(icon_path, "icon_path", thespritefile[entries]["icon"]["path"])
+    check_data(
+        banner_image_bool, "banner_image_bool", thespritefile[entries]["banner_image"]
+    )
+    check_data(
+        extradir_faceleft_bool,
+        "extradir_faceleft_bool",
+        thespritefile[entries]["extra_dir"]["face_left"]["exist"],
+    )
+    check_data(
+        extradir_faceleft_path,
+        "extradir_faceleft_path",
+        thespritefile[entries]["extra_dir"]["face_left"]["path"],
+    )
+    check_data(
+        extradir_faceright_bool,
+        "extradir_faceright_bool",
+        thespritefile[entries]["extra_dir"]["face_right"]["exist"],
+    )
+    check_data(
+        extradir_faceright_path,
+        "extradir_faceright_path",
+        thespritefile[entries]["extra_dir"]["face_right"]["path"],
+    )
+    check_data(
+        extradir_faceback_bool,
+        "extradir_faceback_bool",
+        thespritefile[entries]["extra_dir"]["face_back"]["exist"],
+    )
+    check_data(
+        extradir_faceback_path,
+        "extradir_faceback_path",
+        thespritefile[entries]["extra_dir"]["face_back"]["path"],
+    )
+    check_data(
+        extradir_facefront_bool,
+        "extradir_facefront_bool",
+        thespritefile[entries]["extra_dir"]["face_front"]["exist"],
+    )
+    check_data(
+        extradir_facefront_path,
+        "extradir_facefront_path",
+        thespritefile[entries]["extra_dir"]["face_front"]["path"],
+    )
+    check_data(
+        extradir_idle_bool,
+        "extradir_idle_bool",
+        thespritefile[entries]["extra_dir"]["idle"]["exist"],
+    )
+    check_data(
+        extradir_idle_path,
+        "extradir_idle_path",
+        thespritefile[entries]["extra_dir"]["idle"]["path"],
+    )
+    check_data(
+        extradir_walking_bool,
+        "extradir_walking_bool",
+        thespritefile[entries]["extra_dir"]["walking"]["exist"],
+    )
+    check_data(
+        extradir_walking_path,
+        "extradir_walking_path",
+        thespritefile[entries]["extra_dir"]["walking"]["path"],
+    )
+    check_data(
+        extradir_buttons_descriptions_bool,
+        "extradir_buttons_descriptions_bool",
+        thespritefile[entries]["extra_dir"]["buttons"]["descriptions"]["exist"],
+    )
+    check_data(
+        extradir_buttons_descriptions_path,
+        "extradir_buttons_descriptions_path",
+        thespritefile[entries]["extra_dir"]["buttons"]["descriptions"]["path"],
+    )
+    check_data(
+        extradir_buttons_directional_bool,
+        "extradir_buttons_directional_bool",
+        thespritefile[entries]["extra_dir"]["buttons"]["directional"]["exist"],
+    )
+    check_data(
+        extradir_buttons_directional_path,
+        "extradir_buttons_directional_path",
+        thespritefile[entries]["extra_dir"]["buttons"]["directional"]["path"],
+    )
+    check_data(
+        extradir_buttons_aux_bool,
+        "extradir_buttons_aux_bool",
+        thespritefile[entries]["extra_dir"]["buttons"]["aux"]["exist"],
+    )
+    check_data(
+        extradir_buttons_aux_path,
+        "extradir_buttons_aux_path",
+        thespritefile[entries]["extra_dir"]["buttons"]["aux"]["path"],
+    )
+    check_data(
+        extradir_spritesheet_bool,
+        "extradir_spritesheet_bool",
+        thespritefile[entries]["extra_dir"]["spritesheet"]["exist"],
+    )
+    check_data(
+        extradir_spritesheet_path,
+        "extradir_spritesheet_path",
+        thespritefile[entries]["extra_dir"]["spritesheet"]["path"],
+    )
+    check_data(ready_status, "ready_status", thespritefile[entries]["ready"])
+    check_data(need_list, "need_list", thespritefile[entries]["need"][0])
 
-    # print(char_dict[entries])
-    print("")
-    pprint(main_dict)
+    if data_exist:
+        with open(data_path) as chr_data_file:
+            thedatafile = json.load(chr_data_file)
+        chr_data_file.close()
 
-    if print_stuff == True:
-        print(f"{entries}\n\nDictionary:")
-        pprint(d[entries])
-        print(f"\nNot Ready:")
-        pprint(not_ready_extra_dir)
-        print("\nReady:")
-        pprint(ready_extra_dir)
-        print("\n", "x" * 100, "\n", "x" * 100, "\n")
+        check_data(char_name, "char_name", thedatafile["Char_name"])
+        check_data(char_icon_title, "char_icon_title", thedatafile["Char_icon"]["title"])
+        check_data(char_icon_path, "char_icon_path", thedatafile["Char_icon"]["path"])
+        check_data(
+            char_spritesheet_title,
+            "char_spritesheet_title",
+            thedatafile["Char_Spritesheet"]["title"],
+        )
+        check_data(
+            char_spritesheet_path,
+            "char_spritesheet_path",
+            thedatafile["Char_Spritesheet"]["path"],
+        )
+        check_data(
+            char_spritesheet_number_of_actions,
+            "char_spritesheet_number_of_actions",
+            thedatafile["Char_Spritesheet"]["number_of_actions"],
+        )
+        check_data(
+            char_spritesheet_spritesheet_width,
+            "char_spritesheet_spritesheet_width",
+            thedatafile["Char_Spritesheet"]["spritesheet_width"],
+        )
+        check_data(
+            char_spritesheet_spritesheet_height,
+            "char_spritesheet_spritesheet_height",
+            thedatafile["Char_Spritesheet"]["spritesheet_height"],
+        )
+        check_data(
+            char_spritesheet_frame_width,
+            "char_spritesheet_frame_width",
+            thedatafile["Char_Spritesheet"]["frame_width"],
+        )
+        check_data(
+            char_spritesheet_frame_height,
+            "char_spritesheet_frame_height",
+            thedatafile["Char_Spritesheet"]["frame_height"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceleft_path,
+            "char_spritesheet_Animations_faceleft_path",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_left"]["path"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceleft_numb,
+            "char_spritesheet_Animations_faceleft_numb",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_left"]["numb"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceleft_total_frames,
+            "char_spritesheet_Animations_faceleft_total_frames",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_left"]["total_frames"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceleft_fps,
+            "char_spritesheet_Animations_faceleft_fps",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_left"]["fps"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceleft_pixel_size,
+            "char_spritesheet_Animations_faceleft_pixel_size",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_left"]["pixel_size"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceleft_button_key,
+            "char_spritesheet_Animations_faceleft_button_key",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_left"]["button_key"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceright_path,
+            "char_spritesheet_Animations_faceright_path",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_right"]["path"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceright_numb,
+            "char_spritesheet_Animations_faceright_numb",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_right"]["numb"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceright_total_frames,
+            "char_spritesheet_Animations_faceright_total_frames",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_right"]["total_frames"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceright_fps,
+            "char_spritesheet_Animations_faceright_fps",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_right"]["fps"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceright_pixel_size,
+            "char_spritesheet_Animations_faceright_pixel_size",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_right"]["pixel_size"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceright_button_key,
+            "char_spritesheet_Animations_faceright_button_key",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_right"]["button_key"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceback_path,
+            "char_spritesheet_Animations_faceback_path",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_back"]["path"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceback_numb,
+            "char_spritesheet_Animations_faceback_numb",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_back"]["numb"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceback_total_frames,
+            "char_spritesheet_Animations_faceback_total_frames",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_back"]["total_frames"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceback_fps,
+            "char_spritesheet_Animations_faceback_fps",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_back"]["fps"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceback_pixel_size,
+            "char_spritesheet_Animations_faceback_pixel_size",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_back"]["pixel_size"],
+        )
+        check_data(
+            char_spritesheet_Animations_faceback_button_key,
+            "char_spritesheet_Animations_faceback_button_key",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_back"]["button_key"],
+        )
+        check_data(
+            char_spritesheet_Animations_facefront_path,
+            "char_spritesheet_Animations_facefront_path",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_front"]["path"],
+        )
+        check_data(
+            char_spritesheet_Animations_facefront_numb,
+            "char_spritesheet_Animations_facefront_numb",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_front"]["numb"],
+        )
+        check_data(
+            char_spritesheet_Animations_facefront_total_frames,
+            "char_spritesheet_Animations_facefront_total_frames",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_front"]["total_frames"],
+        )
+        check_data(
+            char_spritesheet_Animations_facefront_fps,
+            "char_spritesheet_Animations_facefront_fps",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_front"]["fps"],
+        )
+        check_data(
+            char_spritesheet_Animations_facefront_pixel_size,
+            "char_spritesheet_Animations_facefront_pixel_size",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_front"]["pixel_size"],
+        )
+        check_data(
+            char_spritesheet_Animations_facefront_button_key,
+            "char_spritesheet_Animations_facefront_button_key",
+            thedatafile["Char_Spritesheet"]["Animations"]["face_front"]["button_key"],
+        )
+        check_data(
+            char_spritesheet_Animations_idle_path,
+            "char_spritesheet_Animations_idle_path",
+            thedatafile["Char_Spritesheet"]["Animations"]["idle"]["path"],
+        )
+        check_data(
+            char_spritesheet_Animations_idle_numb,
+            "char_spritesheet_Animations_idle_numb",
+            thedatafile["Char_Spritesheet"]["Animations"]["idle"]["numb"],
+        )
+        check_data(
+            char_spritesheet_Animations_idle_total_frames,
+            "char_spritesheet_Animations_idle_total_frames",
+            thedatafile["Char_Spritesheet"]["Animations"]["idle"]["total_frames"],
+        )
+        check_data(
+            char_spritesheet_Animations_idle_fps,
+            "char_spritesheet_Animations_idle_fps",
+            thedatafile["Char_Spritesheet"]["Animations"]["idle"]["fps"],
+        )
+        check_data(
+            char_spritesheet_Animations_idle_pixel_size,
+            "char_spritesheet_Animations_idle_pixel_size",
+            thedatafile["Char_Spritesheet"]["Animations"]["idle"]["pixel_size"],
+        )
+        check_data(
+            char_spritesheet_Animations_idle_button_key,
+            "char_spritesheet_Animations_idle_button_key",
+            thedatafile["Char_Spritesheet"]["Animations"]["idle"]["button_key"],
+        )
+        check_data(
+            char_spritesheet_Animations_walking_path,
+            "char_spritesheet_Animations_walking_path",
+            thedatafile["Char_Spritesheet"]["Animations"]["walking"]["path"],
+        )
+        check_data(
+            char_spritesheet_Animations_walking_numb,
+            "char_spritesheet_Animations_walking_numb",
+            thedatafile["Char_Spritesheet"]["Animations"]["walking"]["numb"],
+        )
+        check_data(
+            char_spritesheet_Animations_walking_total_frames,
+            "char_spritesheet_Animations_walking_total_frames",
+            thedatafile["Char_Spritesheet"]["Animations"]["walking"]["total_frames"],
+        )
+        check_data(
+            char_spritesheet_Animations_walking_fps,
+            "char_spritesheet_Animations_walking_fps",
+            thedatafile["Char_Spritesheet"]["Animations"]["walking"]["fps"],
+        )
+        check_data(
+            char_spritesheet_Animations_walking_pixel_size,
+            "char_spritesheet_Animations_walking_pixel_size",
+            thedatafile["Char_Spritesheet"]["Animations"]["walking"]["pixel_size"],
+        )
+        check_data(
+            char_spritesheet_Animations_walking_button_key,
+            "char_spritesheet_Animations_walking_button_key",
+            thedatafile["Char_Spritesheet"]["Animations"]["walking"]["button_key"],
+        )
+        check_data(
+            char_spritesheet_Animations_buttons_descriptions_alt_b_1_title,
+            "char_spritesheet_Animations_buttons_descriptions_alt_b_1_title",
+            thedatafile["Char_Spritesheet"]["Animations"]["Buttons"]["descriptions"][
+                "alt_button_01"
+            ]["title"],
+        )
+        check_data(
+            char_spritesheet_Animations_buttons_descriptions_alt_b_1_path,
+            "char_spritesheet_Animations_buttons_descriptions_alt_b_1_path",
+            thedatafile["Char_Spritesheet"]["Animations"]["Buttons"]["descriptions"][
+                "alt_button_01"
+            ]["path"],
+        )
+        check_data(
+            char_spritesheet_Animations_buttons_descriptions_alt_b_1_type,
+            "char_spritesheet_Animations_buttons_descriptions_alt_b_1_type",
+            thedatafile["Char_Spritesheet"]["Animations"]["Buttons"]["descriptions"][
+                "alt_button_01"
+            ]["type"],
+        )
+        check_data(
+            char_spritesheet_Animations_buttons_directional_alt_b_1_title,
+            "char_spritesheet_Animations_buttons_directional_alt_b_1_title",
+            thedatafile["Char_Spritesheet"]["Animations"]["Buttons"]["directional"][
+                "alt_button_01"
+            ]["title"],
+        )
+        check_data(
+            char_spritesheet_Animations_buttons_directional_alt_b_1_path,
+            "char_spritesheet_Animations_buttons_directional_alt_b_1_path",
+            thedatafile["Char_Spritesheet"]["Animations"]["Buttons"]["directional"][
+                "alt_button_01"
+            ]["path"],
+        )
+        check_data(
+            char_spritesheet_Animations_buttons_directional_alt_b_1_type,
+            "char_spritesheet_Animations_buttons_directional_alt_b_1_type",
+            thedatafile["Char_Spritesheet"]["Animations"]["Buttons"]["directional"][
+                "alt_button_01"
+            ]["type"],
+        )
+        check_data(
+            char_spritesheet_Animations_buttons_aux_alt_b_1_title,
+            "char_spritesheet_Animations_buttons_aux_alt_b_1_title",
+            thedatafile["Char_Spritesheet"]["Animations"]["Buttons"]["aux"][
+                "alt_button_01"
+            ]["title"],
+        )
+        check_data(
+            char_spritesheet_Animations_buttons_aux_alt_b_1_path,
+            "char_spritesheet_Animations_buttons_aux_alt_b_1_path",
+            thedatafile["Char_Spritesheet"]["Animations"]["Buttons"]["aux"][
+                "alt_button_01"
+            ]["path"],
+        )
+        check_data(
+            char_spritesheet_Animations_buttons_aux_alt_b_1_type,
+            "char_spritesheet_Animations_buttons_aux_alt_b_1_type",
+            thedatafile["Char_Spritesheet"]["Animations"]["Buttons"]["aux"][
+                "alt_button_01"
+            ]["type"],
+        )
+        check_data(
+            char_descriptors_name,
+            "char_descriptors_name",
+            thedatafile["Char_Descriptors"]["name"],
+        )
+        check_data(
+            char_descriptors_date,
+            "char_descriptors_date",
+            thedatafile["Char_Descriptors"]["date"],
+        )
+        check_data(
+            char_descriptors_Insperation_name,
+            "char_descriptors_Insperation_name",
+            thedatafile["Char_Descriptors"]["Insperation"][0]["name"],
+        )
+        check_data(
+            char_descriptors_Insperation_link,
+            "char_descriptors_Insperation_link",
+            thedatafile["Char_Descriptors"]["Insperation"][0]["link"],
+        )
+        check_data(
+            char_bannerimage_name,
+            "char_bannerimage_name",
+            thedatafile["Char_Descriptors"]["banner_image"]["name"],
+        )
+        check_data(
+            char_bannerimage_path,
+            "char_bannerimage_path",
+            thedatafile["Char_Descriptors"]["banner_image"]["path"],
+        )
+        check_data(url_insta, "url_insta", thedatafile["URLS"]["instagram"])
+        check_data(url_tumblr, "url_tumblr", thedatafile["URLS"]["tumblr"])
+        check_data(url_twitter, "url_twitter", thedatafile["URLS"]["twitter"])
+        check_data(status_ready, "status_ready", thedatafile["Status"]["Ready"])
+        check_data(status_need, "status_need", thedatafile["Status"]["Need"])
+
+    the_master_dict = {entries: dict_data}
+    return the_master_dict
+
+# for item in character_names:
+#     print(sptire_data_j(item))

@@ -4,6 +4,8 @@ utils
 
 # ignore these folders
 tobitheghost/utils/
+tobitheghost/templates/html_utils
+tobitheghost/static/utils_static
 tobitheghost/__pycache__/__init__.cpython-310.pyc
 tobitheghost/__pycache__/home.cpython-310.pyc
 tobitheghost/__pycache__/logs.cpython-310.pyc

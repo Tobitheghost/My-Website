@@ -79,7 +79,7 @@
     align-items: center;
   }
   #hero-wrapper {
-    padding: 50px 50px 50px;
+    padding: 50px 50px 50px 50px;
   }
 }
 
@@ -199,11 +199,17 @@
 #portfolio {
   max-width: 100vw;
   margin: 0px 0px 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #portfolio-section {
+  /* align-items: center; */
+  /* justify-content: center; */
   display: grid;
   height: 100%;
-  max-width: 100%;
+  max-width: 97%;
 }
 .portfio-skills {
   list-style: none;
@@ -307,6 +313,10 @@
   font-size: 1.3em;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+.about-me-wrapper {
+  display: flex;
+  padding-left: 40px;
+}
 .para {
   line-height: 10px;
   padding: 0px 0px 0px 0px;
@@ -335,6 +345,7 @@
     max-width: 100%;
     height: 70vh;
     margin-bottom: 10%;
+    padding-left: 40px;
   }
   #about-me {
     display: flex;
@@ -416,7 +427,7 @@
   .about-me-wrapper {
     max-width: 100%;
     margin-bottom: 10%;
-    padding: 70px 0 0 0;
+    padding: 70px 20px 0 20px;
   }
   #about-me {
     display: flex;
@@ -434,7 +445,7 @@
   .about-me-wrapper {
     max-width: 100%;
     margin-bottom: 10%;
-    padding: 70px 0 0 0;
+    padding: 70px 20px 0 20px;
   }
   #about-me {
     display: flex;

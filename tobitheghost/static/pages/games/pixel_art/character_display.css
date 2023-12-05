@@ -126,6 +126,15 @@
     cursor: pointer;
     
 } 
+.inspo_link {
+    text-decoration: none;
+    color: black;
+}
+
+.inspo_name_link {
+    text-decoration: underline;
+    color: #8b0000;
+}
 
 .Character.One {
     outline: solid purple var(--outine-visable);
