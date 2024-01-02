@@ -12,23 +12,22 @@ let map = L.map('map').setView([51.505, -0.09], 13);
 
     function updateMap(polyString) {
         let myElement = document.getElementById(polyString)
-        console.log(polyString)
-        let myvalue = myElement.value;
-        myvalue = myvalue.split('[[')[1]
-        myvalue = myvalue.split(']]')[0]
-        myvalue = myvalue.split('], [')
-        let arr = []
-        for (const element of myvalue) {
-            let item = element.split(",")
-            item = [item[0].split("'")[1], item[1].split("'")[1]]
-            arr.push(item); 
-        }
-        console.log(arr)
-        let latlngs = arr;
+        let test = JSON.parse((myElement.value).replace(/'/g,'\"'))
+        console.log(test)
+        // let myvalue = myElement.value;
+        // myvalue = myvalue.split('[[')[1]
+        // myvalue = myvalue.split(']]')[0]
+        // myvalue = myvalue.split('], [')
+        // let arr = []
+        // for (const element of myvalue) {
+        //     let item = element.split(",")
+        //     item = [item[0].split("'")[1], item[1].split("'")[1]]
+        //     arr.push(item); 
+        // }
+        // console.log(arr)
+        // console.log(test)
+        let latlngs = test;
         let polygon = L.polygon(latlngs, {color: 'red'}).addTo(map);
         
         map.fitBounds(polygon.getBounds());
     }
-
-
-    
