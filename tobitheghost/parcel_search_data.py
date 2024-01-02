@@ -2,7 +2,7 @@ import pandas as pd
 from pprint import pprint
 from math import isnan
 
-data = pd.read_csv("tobitheghost\static\pages\parcel\Parcels_data.csv")
+data = pd.read_csv("tobitheghost/static/pages/parcel/Parcels_data.csv")
 content = data.iloc[1]
 
 print_log = False
