@@ -2,16 +2,55 @@ import pandas as pd
 from pprint import pprint
 from math import isnan
 
-data = pd.read_csv("tobitheghost/static/pages/parcel/Parcels_data.csv")
+dict_dtypes = {
+    "the_geom": str,
+    "OBJECTID": int,
+    "PARCELTYPE": int,
+    "KIVAPIN": int,
+    "APN": str,
+    "PLATNAME": str,
+    "LOT": str,
+    "BLOCK": str,
+    "TRACT": str,
+    "OWN_NAME": str,
+    "OWN_NAME2": str,
+    "OWN_ADDR": str,
+    "OWN_ADDR2": str,
+    "OWN_CITY": str,
+    "OWN_STATE": str,
+    "OWN_ZIP": str,
+    "ADDRESS": str,
+    "ADDR": str,
+    "FRACTION": str,
+    "PREFIX": str,
+    "STREET": str,
+    "STREET_TYPE": str,
+    "SUITE": str,
+    "LANDUSECODE": str,
+    "ASSESSED_LAND_VALUE": float,
+    "ASSESSED_IMPROVE_VALUE": float,
+    "EXEMPT_LAND_VALUE": float,
+    "EXEMPT_IMPROVE_VALUE": float,
+    "ASSESSMENT_EFFECTIVE_DATE": str,
+    "LEGAL": str,
+    "SHAPE.AREA": float,
+    "SHAPE.LEN": float,
+}
+data = pd.read_csv(
+    "tobitheghost/static/pages/parcel/Parcels_data.csv", dtype=dict_dtypes
+)
 content = data.iloc[1]
 
+
 print_log = False
+
 
 def check_nan(entry):
     if type(entry) is not str:
         if isnan(entry):
             entry = ""
     return entry
+
 
 def check_usd(numb):
     new_numb = numb
@@ -23,15 +62,16 @@ def check_usd(numb):
             i = -3
             continueing = True
             while continueing == True:
-                if len(new_numb) > i*-1:
-                    new_numb = f'{new_numb[:i]},{new_numb[i:]}'
+                if len(new_numb) > i * -1:
+                    new_numb = f"{new_numb[:i]},{new_numb[i:]}"
                     i -= 4
-                else: 
+                else:
                     continueing = False
         except ValueError:
             pass
-        new_numb = f'${new_numb}.00'
+        new_numb = f"${new_numb}.00"
     return new_numb
+
 
 def check_land_use(numb):
     # print(f"Land Use: {numb} Type: {type(numb)} Raw {repr(numb)}")
@@ -47,19 +87,48 @@ def check_land_use(numb):
             use = "Unknown Use"
     return new_numb, use
 
-def check_int(numb):
-        try:
-            numb = int(numb)
-        except ValueError:
-            pass
 
-titles = ['the_geom', 'OBJECTID', 'PARCELTYPE', 'KIVAPIN', 'APN', 'PLATNAME',
-        'LOT', 'BLOCK', 'TRACT', 'OWN_NAME', 'OWN_NAME2', 'OWN_ADDR',
-        'OWN_ADDR2', 'OWN_CITY', 'OWN_STATE', 'OWN_ZIP', 'ADDRESS', 'ADDR',
-        'FRACTION', 'PREFIX', 'STREET', 'STREET_TYPE', 'SUITE', 'LANDUSECODE',
-        'ASSESSED_LAND_VALUE', 'ASSESSED_IMPROVE_VALUE', 'EXEMPT_LAND_VALUE',
-        'EXEMPT_IMPROVE_VALUE', 'ASSESSMENT_EFFECTIVE_DATE', 'LEGAL',
-        'SHAPE.AREA', 'SHAPE.LEN']
+def check_int(numb):
+    try:
+        numb = int(numb)
+    except ValueError:
+        pass
+
+
+titles = [
+    "the_geom",
+    "OBJECTID",
+    "PARCELTYPE",
+    "KIVAPIN",
+    "APN",
+    "PLATNAME",
+    "LOT",
+    "BLOCK",
+    "TRACT",
+    "OWN_NAME",
+    "OWN_NAME2",
+    "OWN_ADDR",
+    "OWN_ADDR2",
+    "OWN_CITY",
+    "OWN_STATE",
+    "OWN_ZIP",
+    "ADDRESS",
+    "ADDR",
+    "FRACTION",
+    "PREFIX",
+    "STREET",
+    "STREET_TYPE",
+    "SUITE",
+    "LANDUSECODE",
+    "ASSESSED_LAND_VALUE",
+    "ASSESSED_IMPROVE_VALUE",
+    "EXEMPT_LAND_VALUE",
+    "EXEMPT_IMPROVE_VALUE",
+    "ASSESSMENT_EFFECTIVE_DATE",
+    "LEGAL",
+    "SHAPE.AREA",
+    "SHAPE.LEN",
+]
 
 land_use_code = {
     "1111": "Single Family (Non-Mobile Home Park)",
@@ -127,27 +196,32 @@ land_use_code = {
     "9300": "Underground Space",
     "9400": "Permanent Open Space (e.g. flood)",
     "9500": "Vacant Residential",
-    "9600": "Vacant Non-Residential (including billboards)"
+    "9600": "Vacant Non-Residential (including billboards)",
 }
 
-def pt(p, n, t = titles):
+
+def pt(p, n, t=titles):
     remainder = int(str(p).split(".")[1])
     p = int(p)
-    up = "\x1B[3A" # ANSI control codes
+    up = "\x1B[3A"  # ANSI control codes
     clr = "\x1B[0K"
-    loop_percentage = int((n / 31)*100)
+    loop_percentage = int((n / 31) * 100)
     loop_per_remainder = 100 - loop_percentage
-    l_p = "█"*loop_percentage
-    l_r = "-"*loop_per_remainder
+    l_p = "█" * loop_percentage
+    l_r = "-" * loop_per_remainder
     l_bar = f"~[{l_p}{l_r}]~"
     re_remainder = 100 - remainder
-    r_p = "█"*remainder
-    r_r = "-"*re_remainder
+    r_p = "█" * remainder
+    r_r = "-" * re_remainder
     r_bar = f"~[{r_p}{r_r}]~"
-    print(f"{up}Loop:      {l_bar}{clr}\nRemainder: {r_bar}{clr}\nProgress  ({p}%){clr}")
+    print(
+        f"{up}Loop:      {l_bar}{clr}\nRemainder: {r_bar}{clr}\nProgress  ({p}%){clr}"
+    )
     # print(f"{bar} --- {p}%", end='\r')
     if print_log == True:
         print(t[n])
+
+
 top = data.dtypes
 
 # for x in range(len(data.index)):
@@ -157,7 +231,7 @@ top = data.dtypes
 #         # # print(f"{percent}%")
 
 #     item = data.iloc[x]["the_geom"].replace("MULTIPOLYGON (((", "").replace(")))", "").replace(", ", ",").split(",")
-    
+
 #     pt(percent,0)
 #     new__the_geom = [[x.split(" ")[0], x.split(" ")[1]] for x in item]
 #     pt(percent,3)
@@ -194,7 +268,7 @@ top = data.dtypes
 #     new__ADDRESS=check_nan(data.iloc[x]["ADDRESS"])
 #     pt(percent,17)
 #     new__ADDR=check_nan(data.iloc[x]["ADDR"])
-    
+
 
 #     pt(percent,18)
 #     new__FRACTION=check_nan(data.iloc[x]["FRACTION"])
@@ -281,7 +355,7 @@ top = data.dtypes
 #         print(f"\033[0;32mNew Shape Area:\033[0m {new__SHAPE_AREA}")
 #         print(f"\033[0;32mNew Shape Legnth:\033[0m {new__SHAPE_LEN}")
 #         print("\n\n\n")
-    
+
 #     # a = input()
 #     # if a == "x":
 #         # break

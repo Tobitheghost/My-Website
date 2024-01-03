@@ -16,7 +16,7 @@ def req_log():
     headers_Host = f'HOST HEADERS {request.headers.get("HOST")}'
     headers_X_REAL_IP = f'X_REAL_IP HEADERS {request.headers.get("X_REAL_IP")}'
     headers_FORWARDED_FOR = f'FORWARDED_FOR HEADERS {request.headers.get("X_FORWARDED_FOR")}'
-    header_get_all = f'All HEADERS {request.headers.get_all()}'
+    header_get_all = f'All HEADERS {request.headers.get_all("X_REAL_IP")}'
     logging.warn(visitor_ip)
     logging.warn(user_agent)
     logging.warn(visitor_url)
