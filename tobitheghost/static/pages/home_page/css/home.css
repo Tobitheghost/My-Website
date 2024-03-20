@@ -22,10 +22,9 @@
   display: flex;
   flex-direction: column;
   border-radius: 25px;
-  background: var(--secondary-background-color)
+  background: var(--secondary-background-color);
 }
 @media (max-width: 1199px) {
-  
   #hero {
     margin-top: 30px;
     display: flex;
@@ -53,7 +52,6 @@
 }
 
 @media (min-width: 1200px) {
-
   #hero {
     display: flex;
     height: 80vh;
@@ -121,53 +119,60 @@
   height: 40px;
   width: 200px;
 }
+
 #contact-input {
   display: flex;
   align-items: center;
-}
-#contact-input h2 {
-  margin: 0px 0px 0px 10px;
-  font-size: var(--contact_input-text-size);
-}
-#input-text {
-  padding: 10px 0 10px;
-  display: flex;
-  justify-content: space-around;
-}
-#name-label,
-#email-label {
-  padding: 10px;
-}
-#name_field,
-#email_field {
-  width: 100%;
-  margin: 10px 0;
-  color: var(--main-text-color);
-  font-weight: lighter;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  padding: 10px 10px;
-  border-radius: 15px;
-  height: 2rem;
-  background-color: var(--secondary-background-color);
-  border: none;
-}
-#name-input,
-#email-input {
-  width: 50%;
-  padding: 10px 0px;
-  font-weight: bold;
-}
-#name-input {
-  padding-right: 5px;
-}
-#email-input {
-  padding-left: 5px;
 }
 #contact-input fieldset {
   border-style: none;
   display: flex;
   flex-direction: column;
 }
+
+#contact-input h2 {
+  margin: 0px 0px 20px 0px;
+  font-size: var(--contact_input-text-size);
+}
+
+.contact_me {
+  display: grid;
+  height: 720px;
+  grid-template-columns: inherit;
+  grid-gap: inherit;
+}
+
+#contact-input {
+  grid-column: span 7;
+  height: auto;
+  align-self: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#contact-input .text_input {
+  padding: 10px 0 10px 0;
+}
+
+#contact-input label {
+  line-height: 2rem;
+}
+
+#contact-input fieldset {
+  border-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+#contact-input select {
+  border: solid black 3px;
+  background-color: transparent;
+  color: var(--main-text-color);
+  padding: 0 0 0 5px;
+  height: 2rem;
+  width: 100%;
+}
+
 #contact-input textarea {
   color: var(--main-text-color);
   font-weight: lighter;
@@ -177,19 +182,97 @@
   padding: 10px 10px 10px;
   margin-bottom: 20px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  height: 5rem;
 }
-#contact-input #submit_button {
-  height: 45px;
-  width: 200px;
-  cursor: pointer;
-  border-radius: 15px;
+
+.submit_area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.numb_tst {
+  width: 2rem;
+  margin: 10px;
+  height: 36px;
   border: none;
-  color: var(--main-text-color);
-  background-color: var(--button-color);
-  transition: background-color 1s ease;
+  background-color: var(--secondary-background-color);
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
 }
-#contact-input #submit_button:hover {
+
+#contact-input input[type="submit"] {
+  margin: 10px;
+  height: 36px;
+  border: none;
+  background-color: var(--button-color);
+  color: white;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  width: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 1s linear;
+}
+
+#contact-input input[type="submit"]:hover {
   background-color: var(--button-hover-color);
+}
+
+.text_input input,
+.input_text {
+  display: flex;
+  width: 100%;
+  color: var(--main-text-color);
+  font-weight: lighter;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  padding: 10px 10px;
+  border-radius: 15px;
+  height: 2rem;
+  background-color: var(--secondary-background-color);
+  border: none;
+  justify-content: space-around;
+}
+
+.numb_tst {
+  width: 2rem;
+  border: none;
+  border-bottom: solid black 2px;
+}
+
+.text_input input:focus,
+.input_text:focus,
+.numb_tst:focus {
+  box-sizing: border-box;
+  border: none;
+  outline: 3px darkred solid;
+}
+
+#contact-input select:focus {
+  box-sizing: border-box;
+  border: 3px darkred solid;
+}
+
+.contact_article {
+  display: flex;
+  grid-column: 8 / span 5;
+  grid-template-columns: inherit;
+  grid-gap: inherit;
+  background-color: lightgray;
+  padding: 24px;
+  border-radius: 20px;
+}
+
+.contact_text .my_email {
+  font-weight: bold;
+}
+
+.contact_text .my_email span {
+  font-weight: 100;
 }
 
 .pixel-art {
@@ -205,8 +288,6 @@
   justify-content: center;
 }
 #portfolio-section {
-  /* align-items: center; */
-  /* justify-content: center; */
   display: grid;
   height: 100%;
   max-width: 97%;

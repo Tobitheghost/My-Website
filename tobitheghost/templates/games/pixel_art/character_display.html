@@ -68,11 +68,7 @@ head_link_script %}
       <img
         src="{{url_for('static', filename='pages/games/pixel_art/buttons/Buttons.png')}}"
         alt="Coin Buttons"
-        class="p_button pixelart"
-        hx-get="/character_display/face_front"
-        hx-target=".move_buttons"
-        hx-trigger="click"
-        hx-swap="outerHTML" />
+        class="p_button pixelart" />
     </div>
   </div>
   <div class="DescriptionContainer">
@@ -108,7 +104,7 @@ head_link_script %}
     </div>
     <div class="description_button">
       <button class="freeRoam"></button>
-      <a href="{{ url_for('pixel') }}">
+      <a href="{{ url_for('home.pixel') }}">
         <button class="characterSelect">Character Select</button>
       </a>
     </div>

@@ -13,7 +13,7 @@
   </head>
   <body>
     <header>
-      <a class="logo" href="{{ url_for('home') }}"
+      <a class="logo" href="{{ url_for('home.home') }}"
         ><img
           src="{{url_for('static', filename='pages/gxo/logo.png')}}"
           alt="Logo"
@@ -21,14 +21,14 @@
       /></a>
       <nav>
         <ul class="nav_links">
-          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('home.home') }}">Home</a></li>
           <li>
-            <a href="{{ url_for('home') }}#portfolio-link">Projects</a>
+            <a href="{{ url_for('home.home') }}#portfolio-link">Projects</a>
           </li>
-          <li><a href="{{ url_for('home') }}#about-me">About</a></li>
+          <li><a href="{{ url_for('home.home') }}#about-me">About</a></li>
         </ul>
       </nav>
-      <a href="{{ url_for('home') }}#contact-input"><button>Contact</button></a>
+      <a href="{{ url_for('home.home') }}#contact-input"><button>Contact</button></a>
     </header>
 
     {% block content %}

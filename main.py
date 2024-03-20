@@ -1,5 +1,4 @@
-from tobitheghost import app
-from tobitheghost import home
+from tobitheghost import create_app
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    create_app().run(debug=True)

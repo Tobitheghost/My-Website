@@ -9,3 +9,5 @@ tobitheghost/static/utils_static
 tobitheghost/__pycache__
 .vscode/settings.json
 tobitheghost/static/pages/parcel/Parcels_data.csv
+tobitheghost/utils/server_site.log
+tobitheghost/static/pages/parcel/Parcels_data.db

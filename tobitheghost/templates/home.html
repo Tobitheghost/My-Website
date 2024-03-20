@@ -45,44 +45,66 @@ head_link_script %}
           ></a
         >
       </div>
-      <a href="{{ url_for('home') }}#about-me"
+      <a href="{{ url_for('home.home') }}#about-me"
         ><button>Get To Know Me!</button></a
       >
     </div>
   </div>
   <div id="contact-hero">
     <div id="contact-input">
-      <form>
+      <form method="Post" action="{{url_for('home.home', _anchor='contact-input')}}">
         <fieldset>
-          <!-- <p>I spent alot of time on this site, but contacting me would be the easiest way to get to know me.</p> -->
-          <legend><h2>Contact Me</h2></legend>
-          <div id="input-text">
-            <div id="name-input">
-              <label id="name-label" for="name_field">Name:</label>
-              <input
-                id="name_field"
-                name="name_field"
-                type="text"
-                placeholder="Enter a Name" />
+          <legend>
+            <h2>Contact Me</h2>
+            {% with messages = get_flashed_messages()%}
+                {% if messages %}
+                    {% for message, catagory in messages %}
+                        {% if message == None%}
+
+                        {% else %}
+                            <span><p class="{{ catagory }}">{{ message }}</p></span>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}    
+        </legend>
+
+        {{ form.hidden_tag() }}
+        <div class="input_spacer text_input">
+            {{ form.name.label(class_="inputlabel_name") }}
+            {{ form.name(class_="input_name", placeholder="Name")}}
+        </div>
+
+        <div class="input_spacer">
+            <label for="input_entity" class="inputlabel_entity">Are you with an Orginization or an
+                Individual*</label>
+            <br />
+            <select id="input_entity" name="input_entity" class="input_entity">
+                <option name="input_option_org" value="orginization">Orginization</option>
+                <option name="input_option_ind" value="individual">Individual</option>
+            </select>
+            <br />
+        </div>
+
+        <div class="input_spacer text_input">
+            {{ form.email.label(class_="inputlabel_email") }}
+            {{ form.email(class_="input_email", placeholder="Email Address") }}
+        </div>
+
+        <div class="input_spacer">
+            {{ form.textarea.label(class_="inputlabel_text") }}
+            {{ form.textarea(class_="input_text", cols="50", placeholder="What is a good time to set up a meeting?") }}
+        </div>
+
+        <div class="input_spacer submit_area">
+            {{ form.submitbtn(class_="contact_submit") }}
+
+            <div class="check_numb">
+                {{ form.test.label(class_="numblable_tst") }}
+                {{ form.test(class_="numb_tst") }}
             </div>
-            <div id="email-input">
-              <label id="email-label" name="email_field">Email:</label>
-              <input
-                id="email_field"
-                name="email_field"
-                type="email"
-                required
-                placeholder="Enter your Email" />
-            </div>
-          </div>
-          <!-- <label for="email_body">Message:</label> -->
-          <textarea
-            id="email_body"
-            name="email_body"
-            rows="10"
-            cols="50"
-            placeholder="Enter your Message"></textarea>
-          <input id="submit_button" type="submit" value="Send Message" />
+        </div>
+
         </fieldset>
       </form>
     </div>
@@ -149,7 +171,7 @@ head_link_script %}
 
     <!-- Texas Toms -->
     <div class="portfolio-wrapper">
-      <a id="portfolio-link" href="{{ url_for('texas') }}">
+      <a id="portfolio-link" href="{{ url_for('home.texas') }}">
         <div id="attention-portolio">
           <h3 class="portfolio-title">Texas Toms</h3>
           <div class="portfolio-image-">
@@ -212,7 +234,7 @@ head_link_script %}
 
     <!-- Maps -->
     <div class="portfolio-wrapper">
-      <a id="portfolio-link" href="{{ url_for('maps') }}">
+      <a id="portfolio-link" href="{{ url_for('home.maps') }}">
         <div id="attention-portolio">
           <h3 class="portfolio-title">Maps</h3>
           <div class="portfolio-image-">
@@ -246,7 +268,7 @@ head_link_script %}
 
     <!-- gxo -->
     <div class="portfolio-wrapper">
-      <a id="portfolio-link" href="{{ url_for('gxo') }}">
+      <a id="portfolio-link" href="{{ url_for('home.gxo') }}">
         <div id="attention-portolio">
           <h3 class="portfolio-title">GXO</h3>
           <div class="portfolio-image-">
@@ -277,7 +299,7 @@ head_link_script %}
 
     <!-- Games -->
     <div class="portfolio-wrapper">
-      <a id="portfolio-link" href="{{ url_for('games') }}">
+      <a id="portfolio-link" href="{{ url_for('home.games') }}">
         <div id="attention-portolio">
           <h3 class="portfolio-title">Games</h3>
           <div class="portfolio-image-">

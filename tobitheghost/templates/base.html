@@ -19,7 +19,7 @@
   <body>
     <nav>
       <div id="nav-bar">
-        <a class="nav-image-link" href="{{ url_for('home') }}">
+        <a class="nav-image-link" href="{{ url_for('home.home') }}">
           <div id="nav-image">
             <img
               class="nav-image"
@@ -30,28 +30,28 @@
         <div id="nav-links">
           <ul>
             <li>
-              <a href="{{ url_for('home') }}#about-me"
+              <a href="{{ url_for('home.home') }}#about-me"
                 ><span class="link-text">About Me</span></a
               >
             </li>
             <li>
-              <a href="{{ url_for('home') }}#portfolio-link"
+              <a href="{{ url_for('home.home') }}#portfolio-link"
                 ><span class="link-text">Portfolio</span></a
               >
             </li>
             <li>
-              <a href="{{ url_for('pixel') }}">
+              <a href="{{ url_for('home.pixel') }}">
                 <span class="link-text">Pixel</span>
               </a>
             </li>
             <li>
-              <a href="{{ url_for('movies') }}"
+              <a href="{{ url_for('home.movies') }}"
                 ><span class="link-text">Movies</span></a
               >
             </li>
           </ul>
           <button id="contact_button">
-            <a href="{{ url_for('home') }}#contact-input">Contact Me</a>
+            <a href="{{ url_for('home.home') }}#contact-input">Contact Me</a>
           </button>
         </div>
       </div>
